@@ -2520,11 +2520,11 @@ ul.breadcrumb li:last-child {
 }
 @media (min-width: 992px) {
   .sidebar-active {
-    padding-right: 100px;
+    padding-right: 200px;
   }
 }
 .sidebar {
-  right: -100px;
+  right: -200px;
 }
 .sidebar-active .sidebar {
   right: 0;
@@ -2536,7 +2536,7 @@ ul.breadcrumb li:last-child {
   position: fixed;
   top: 0;
   transition: all 0.2s ease-out;
-  width: 100px;
+  width: 200px;
   z-index: 20;
 }
 .sidebar a {
@@ -2558,7 +2558,7 @@ ul.breadcrumb li:last-child {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #fff6e3;
+  background: #4d287f;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
