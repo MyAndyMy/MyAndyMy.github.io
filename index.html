@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -155,6 +155,79 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://myandymy.github.io/2022/03/29/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/JMY.jpg">
+      <meta itemprop="name" content="JMY">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MyAndy's Blog">
+      <meta itemprop="description" content="">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | MyAndy's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/29/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" class="post-title-link" itemprop="url">深拷贝与浅拷贝</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-03-29 15:33:36 / Modified: 15:38:39" itemprop="dateCreated datePublished" datetime="2022-03-29T15:33:36+08:00">2022-03-29</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>-<strong>前提</strong><br>在对象拷贝过程中，如果没有自定义拷贝构造函数，系统会提供一个缺省的拷贝构造函数，缺省的拷贝构造函数对于基本类型的成员变量，按字节复制，对于类类型成员变量，调用其相应类型的拷贝构造函数。</p>
+<p>-<strong>浅拷贝</strong><br>缺省的拷贝构造函数就是浅拷贝，它只拷贝对象，不拷贝对象所指的资源。<br>如果类中含有指针变量，那么缺省的拷贝构造函数和赋值函数就隐含了错误。<br>1.被拷贝的（原有的&#x2F;左边的）内存空间没有被释放，造成内存泄漏；<br>2.两个指针指向同一块内存空间，用一个指针去改变所指内存空间的内容时，另一个指针所指内存空间内容也会被改变；<br>3.在两个指针被析构时，一共调用了两次析构函数去释放同一块内存空间。第一个指针被析构时，它们所指的内存空间已经被释放，第二次调用析构函数时，释放一个已经被释放的内存空间，将发生为定义的结果。（系统崩溃、内存泄漏等等）<br>此时就需要深拷贝。</p>
+<p>-<strong>深拷贝</strong><br>拷贝对象时，不仅仅拷贝对象本身，还拷贝对象所指的资源。<br>要想实现深拷贝，必须显式地定义拷贝构造函数和赋值运算符。<br>如果想把拷贝对象A拷贝到对象B中时，显式定义拷贝构造函数&#x2F;赋值运算符时，可以先创建一个临时对象temp，此时编译器会调用构造函数开辟一段和A一样大的空间，然后把A的内容放在temp所指空间中，再交换B和temp对象的内容，最后用析构函数销毁临时对象temp，就完成了将对象A拷贝到对象B中去的工作。</p>
+<p>-<strong>什么时候会调用拷贝函数呢？</strong><br>对象以值传递（非引用传递）的方式传入函数体；<br>对象以值传递（非引用传递）的方式从函数返回；<br>一个对象需要通过另一个对象初始化。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
