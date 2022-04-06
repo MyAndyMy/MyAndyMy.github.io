@@ -129,7 +129,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -164,6 +164,116 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://myandymy.github.io/2022/03/30/%E7%99%BE%E5%BA%A6C++%E4%BA%8C%E9%9D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/JMY.jpg">
+      <meta itemprop="name" content="MyAndy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MyAndy's Blog">
+      <meta itemprop="description" content="Peace&Love">
+    </span>
+    
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | MyAndy's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/03/30/%E7%99%BE%E5%BA%A6C++%E4%BA%8C%E9%9D%A2/" class="post-title-link" itemprop="url">百度C++二面</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-03-30 14:26:36" itemprop="dateCreated datePublished" datetime="2022-03-30T14:26:36+08:00">2022-03-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-31 11:03:01" itemprop="dateModified" datetime="2022-03-31T11:03:01+08:00">2022-03-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E7%BB%8F/" itemprop="url" rel="index"><span itemprop="name">面经</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>有点小摩擦：傍晚的时候我误接又误挂了百度二面面试官的电话（因为当时马上腾讯一面，我以为是腾讯的面试官给我打电话让我进入会议室，所以我进入会议室后立马挂断了）。腾讯一面结束很久之后我才想起来那个电话或许是来自百度，才回复他，我表示很抱歉，百度面试官和我约了当晚九点。结果百度面试官9点20才发来面试链接Orz。一直面到12点20左右Orz。</p>
+<ol>
+<li>先问研究生做的东西，我没做项目，是在做理论性很强的论文。给他细致地讲了我的工作，他反问我这些有什么用处，他举了一些例子觉得人工就可以解决这个问题。不过我又举了复杂的例子来给他解释hhh。</li>
+<li>面试官认为我面试的岗位和我的研究生工作差距很大。我也承认差距很大，但这并不妨碍我找工作呀。</li>
+<li>由于我的研究内容和数据库相关，所以面试官开始问我<strong>关系型数据库和图数据库的区别</strong>。我其实了解过，但是当时有些忘了。开始扯一些图数据库的定义然后疯狂回忆。还说了图数据库的好处。面试官很犀利，指明告诉我不是让我讲定义，是让我讲区别。还指明既然我说了图数据库的优点，难道图数据库很优秀吗，能完全替代关系型数据库吗？后来我终于想起来一个：图数据库查询难啊！图里找子图的复杂度很高，但是关系型数据库的查询就很好。</li>
+<li>堆和栈，谁的资源更宝贵？谁的效率更高？（我只浅显地说了堆栈内存分配和释放的知识。面试官：堆栈的区别有很多，远远多于你说的。）</li>
+<li>在百度输入框里输入一个要查询的内容，会发生什么？（回答：会根据查询内容关键词到数据库里去找对应的，返回相关top10条记录显示在页面中。面试官：一定要去数据库里找吗，万一我输入的是“今天天气怎么样”呢？回答：跟气象局建立数据连接。。。面试官：别说天气了，就问你输入海底捞火锅怎么样，然后会发生什么？回答：海底捞这个关键词比较重要，火锅次重要，“怎么样”不太重要。拿着海底捞这个关键词到数据库索引里去找，然后返回索引所对应的指针内容。面试官：这个海底捞关键词怎么和返回的内容构造索引关系的。想了好久，回答：比如说一篇文章，是个火锅测评，它可能有好几个关键词可以代表这篇文章，比如海底捞，潮汕牛肉火锅，四川火锅，那么这篇文章就被多个这种关键词指针所指，无论我搜哪个关键词，都有可能搜到这篇文章。然后就没再继续问了。）</li>
+<li>知道循环引用吗？（我以为是智能指针里面的那个循环引用，就回答说知道，智能指针吧啦吧啦。面试官：我说的不是这个，是C++里关于头文件的。回答：我猜是多个源文件多次或者继承引用.h文件产生的问题，所以在.h文件里要加上#if_ndef这种安全检查。面试官：我说的不是这个，你明明不知道。回答：我确实不知道到底什么是循环引用，但是我把我知道的相关内容说出来了。）</li>
+<li>回答上述问题的时候，我提到top k，就是百度热搜top k。面试官：刚刚你说的top k怎么实现的？（回答：用堆这个数据结构来实现。先建小根堆，再遍历剩下的数据，如果所遍历到的数据比堆顶大，就作替换，替换之后做堆化操作。面试官：时间复杂度是多少。回答：海量数据求top k的时间复杂度是O(nlogk)。面试官：一次堆化的时间复杂度是多少？回答：一次堆化根可能走到叶子结点，所以是O(logk)。面试官：建堆的时间复杂度是多少？回答：k次堆化所以是O(klogk)。面试官：有没有更快的建堆方式？从下往上建堆。时间复杂度多少。回答：O(klogk)。面试官：你再想想。接下来开始了漫长的推导过程，本人已懵，列出了推导公式，还不会化简，面试官提示错位相减法，等我推导，是O(k)。）</li>
+<li>快排能求top k吗？（回答：能求，pivot的索引在k上，停止计算就可以。面试官：时间复杂度多少？思考很久，刚要推导。面试官：不会就别推导了吧。我：好。）</li>
+<li>7个圆环，相邻的圆环相交，首尾不相交。要求在第i天手里有i个环。允许破坏一个环，怎么做。</li>
+<li>知道模板类吗？</li>
+<li>了解机器学习吗？</li>
+<li>知道linux指令吗？</li>
+<li>知道free吗？</li>
+<li>知道平响吗？</li>
+<li>知道call这个指令吗？</li>
+<li>（此时已经11.30或者更晚了）算法题：两个数据，按位做差，取绝对值，再求和。但是若允许错位做差呢？错位的要求时，指针不能回头。（这里我已懵）如何min错位求差再绝对值的和。</li>
+<li>（此时绝对有12点了）再来一道算法题：说思路就行，给一个数组，怎么做，使得每个数字都小于它左边的和，和右边的和。</li>
+<li>面试官：好，今天面试就到这，你还有什么想问的吗？（我：我本来有想问的，但是因为紧张已经忘了。面试官：你可以想想。我：我想起来了，部门用C++会体现语言的特性吗？比如用到封装、继承这种。还是单纯地使用C++作为一门语言呢？面试官：你想用特性吗？我：当然想啊，就是想学这些。面试官：当然会用到特性，会做一些API对接其他部门。又介绍了一些其他的。）</li>
+<li>此时我脑子已经不转了，说了谢谢，就结束了面试。</li>
+</ol>
+<p>这场面试属于压力面了。</p>
+<p>客观地讲，面试官的优点：愿意倾听我的解释，愿意给我时间让我推导公式，并作适当提示。当我听不懂问题时，愿意复述；面试官的缺点：讲话语气的问题，给人很大压力。</p>
+<p>有些问题我没有回答上来，说了说相关的知识点。</p>
+<p>算法题我也没有做出来，时间太晚了我过了12点就无法思考了…</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
