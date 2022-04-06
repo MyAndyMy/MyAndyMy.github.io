@@ -22,26 +22,26 @@
 
     <meta name="description" content="为什么要引入new和delete C++定义了两个运算符来分配和释放动态内存(一般是堆内存)。 运算符new分配内存，delete释放new分配的内存。 为什么不用malloc和free 由于malloc&#x2F;free是库函数而不是运算符，因此它们不在编译器控制权限之内，我们不能够把类的执行构造函数和析构函数的任务强加于malloc&#x2F;free。C++语言需要一个能完成动态内存分配和">
 <meta property="og:type" content="article">
-<meta property="og:title" content="速推--new&#x2F;delete&#x2F;malloc&#x2F;free">
-<meta property="og:url" content="https://myandymy.github.io/2022/03/30/%E9%80%9F%E6%8E%A8--new:delete:malloc:free/index.html">
+<meta property="og:title" content="new&#x2F;delete&#x2F;malloc&#x2F;free">
+<meta property="og:url" content="https://myandymy.github.io/2022/03/30/new:delete:malloc:free/index.html">
 <meta property="og:site_name" content="MyAndy&#39;s Blog">
 <meta property="og:description" content="为什么要引入new和delete C++定义了两个运算符来分配和释放动态内存(一般是堆内存)。 运算符new分配内存，delete释放new分配的内存。 为什么不用malloc和free 由于malloc&#x2F;free是库函数而不是运算符，因此它们不在编译器控制权限之内，我们不能够把类的执行构造函数和析构函数的任务强加于malloc&#x2F;free。C++语言需要一个能完成动态内存分配和">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-03-30T06:26:36.000Z">
-<meta property="article:modified_time" content="2022-04-06T05:59:32.078Z">
+<meta property="article:modified_time" content="2022-04-06T06:00:41.734Z">
 <meta property="article:author" content="MyAndy">
 <meta property="article:tag" content="keywords">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://myandymy.github.io/2022/03/30/%E9%80%9F%E6%8E%A8--new:delete:malloc:free/">
+<link rel="canonical" href="https://myandymy.github.io/2022/03/30/new:delete:malloc:free/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"https://myandymy.github.io/2022/03/30/%E9%80%9F%E6%8E%A8--new:delete:malloc:free/","path":"2022/03/30/速推--new:delete:malloc:free/","title":"速推--new/delete/malloc/free"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"https://myandymy.github.io/2022/03/30/new:delete:malloc:free/","path":"2022/03/30/new:delete:malloc:free/","title":"new/delete/malloc/free"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>速推--new/delete/malloc/free | MyAndy's Blog</title>
+<title>new/delete/malloc/free | MyAndy's Blog</title>
   
 
 
@@ -176,7 +176,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://myandymy.github.io/2022/03/30/%E9%80%9F%E6%8E%A8--new:delete:malloc:free/">
+    <link itemprop="mainEntityOfPage" href="https://myandymy.github.io/2022/03/30/new:delete:malloc:free/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/JMY.jpg">
@@ -189,12 +189,12 @@
     </span>
     
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="速推--new/delete/malloc/free | MyAndy's Blog">
+      <meta itemprop="name" content="new/delete/malloc/free | MyAndy's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          速推--new/delete/malloc/free
+          new/delete/malloc/free
         </h1>
 
         <div class="post-meta-container">
@@ -212,7 +212,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-06 13:59:32" itemprop="dateModified" datetime="2022-04-06T13:59:32+08:00">2022-04-06</time>
+      <time title="修改时间：2022-04-06 14:00:41" itemprop="dateModified" datetime="2022-04-06T14:00:41+08:00">2022-04-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -396,13 +396,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/03/30/%E7%99%BE%E5%BA%A6%E5%87%A4%E5%B7%A2C++%E4%B8%80%E9%9D%A2/" rel="prev" title="百度凤巢C++一面">
-                  <i class="fa fa-chevron-left"></i> 百度凤巢C++一面
+                <a href="/2022/03/29/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/" rel="prev" title="深拷贝与浅拷贝">
+                  <i class="fa fa-chevron-left"></i> 深拷贝与浅拷贝
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/03/30/%E7%99%BE%E5%BA%A6%E5%87%A4%E5%B7%A2C++%E4%BA%8C%E9%9D%A2/" rel="next" title="百度凤巢C++二面">
-                  百度凤巢C++二面 <i class="fa fa-chevron-right"></i>
+                <a href="/2022/03/30/%E7%99%BE%E5%BA%A6%E5%87%A4%E5%B7%A2C++%E4%B8%80%E9%9D%A2/" rel="next" title="百度凤巢C++一面">
+                  百度凤巢C++一面 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
