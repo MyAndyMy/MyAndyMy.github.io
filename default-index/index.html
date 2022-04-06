@@ -201,9 +201,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-04-05 16:50:36 / 修改时间：16:58:36" itemprop="dateCreated datePublished" datetime="2022-04-05T16:50:36+08:00">2022-04-05</time>
+      <time title="创建时间：2022-04-05 16:50:36" itemprop="dateCreated datePublished" datetime="2022-04-05T16:50:36+08:00">2022-04-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-04-06 09:52:57" itemprop="dateModified" datetime="2022-04-06T09:52:57+08:00">2022-04-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -273,9 +279,9 @@
 <p><strong>IO类型间的关系</strong></p>
 <p>概念上，设备类型和字符大小都不会影响我们要执行的IO操作。例如，我们可以用&gt;&gt;读取数据 ，而不管是从一个控制台窗口，一个磁盘文件，还是一个string读取。类似的，我们也不用管读取的字符能存入一个char对象内，还是一个wchar_t对象内。</p>
 <p>标准库使我们能忽略这些不同类型的流之间的差异，这是通过<strong>继承机制(inheritance)<strong>实现的。利用</strong>模板</strong>，我们可以使用具有继承关系的类，而不必了解继承机制如何工作的细节。</p>
-<p>类型ifstream和istringstream都继承自istream。因此，我们可以像使用istream对象一样来使用ifstream和istringstream对象。也就是说，我们是如何使用cin的，就可以同样地使用这些类型的对象。例如，可以对一个ifstream或istringstream对象调用getline，也可以使用&gt;&gt;从一个ifstream或istringstream对象中读取数据。类似的，类型ofstream和ostringstream都继承自ostream。因此，我们是如何使用cout的，就可以同样地使用这些类型的对象。(cin是istream类的对象，cout是ostream类的对象)</p>
+<p>类型ifstream和istringstream都继承自istream。因此，我们可以像使用istream对象一样来使用ifstream和istringstream对象。也就是说，<strong>我们是如何使用cin的，就可以同样地使用这些类型的对象</strong>。例如，可以对一个ifstream或istringstream对象调用<strong>getline</strong>，也可以使用**&gt;&gt;<strong>从一个ifstream或istringstream对象中读取数据。类似的，类型ofstream和ostringstream都继承自ostream。因此，</strong>我们是如何使用cout的，就可以同样地使用这些类型的对象**。(cin是istream类的对象，cout是ostream类的对象)</p>
 <p><strong>IO对象无拷贝或赋值</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ofstream out1, out2; </span><br><span class="line">out1 = out2;              <span class="comment">//错误:不能对流对象赋值</span></span><br><span class="line"><span class="function">ofstream <span class="title">print</span><span class="params">(ofstream)</span></span>; <span class="comment">//错误:不能初始化ofstream参数</span></span><br><span class="line">out2 = <span class="built_in">print</span>(out2);       <span class="comment">//错误:不能拷贝流对象</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ofstream out1, out2; </span><br><span class="line">out1 = out2;              <span class="comment">//错误: 不能对流对象赋值</span></span><br><span class="line"><span class="function">ofstream <span class="title">print</span><span class="params">(ofstream)</span></span>; <span class="comment">//错误: 不能初始化ofstream参数</span></span><br><span class="line">out2 = <span class="built_in">print</span>(out2);       <span class="comment">//错误: 不能拷贝流对象</span></span><br></pre></td></tr></table></figure>
 
 <p>由于不能拷贝IO对象，因此我们也不能将形参或返回类型设置为流类型。进行IO操作的函数通常以引用方式传递和返回流。读写一个IO对象会改变其状态，因此传递和返回的引用不能是const的。例如，</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">istream &amp;<span class="title">read</span><span class="params">(istream &amp;is, Sales_data &amp;item)</span></span>&#123;<span class="comment">//从给定流中将数据读到给定的对象里</span></span><br><span class="line">  <span class="type">double</span> price = <span class="number">0</span>;</span><br><span class="line">  is &gt;&gt; item.bookNo &gt;&gt; item.units_sold &gt;&gt; price;</span><br><span class="line">  item.revenue = price * item.units_sold;</span><br><span class="line">  <span class="keyword">return</span> is;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -286,10 +292,10 @@
 <p>IO操作一个与生俱来的问题是可能发生错误。</p>
 <p>一些错误是可以恢复的，而另一些错误则发生在系统深处，已经超出了应用程序可以修正的范围。</p>
 <p>下面是一个IO错误的例子，</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ival;</span><br><span class="line">cin &gt;&gt; ival;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ival;</span><br><span class="line">cin &gt;&gt; ival; <span class="comment">//键入Boo,读操作失败</span></span><br></pre></td></tr></table></figure>
 
-<p>如果我们在标准输入上键入，读操作就会失败。因为代码中的输入运算符期待读取一个int，但却得到了一个字符B。这样，cin会进入错误状态。类似的，如果我们输入一个文件结束标识，cin也会进入错误状态。</p>
-<p>一个流一旦发生错误，其上后续的IO操作都会失败。只有当一个流处于无错误状态时，我们才可以从它读取数据，向它写入数据。由于流可能处于错误状态，因此代码通常应该在使用一个流之前，检查它是否处于良好状态。确定一个流对象状态最简单的方法是，将它当作一个条件来使用，</p>
+<p>如果我们在标准输入上键入Boo，读操作就会失败。因为代码中的输入运算符期待读取一个int，但却得到了一个字符B。这样，cin会进入错误状态。类似的，如果我们输入一个文件结束标识，cin也会进入错误状态。</p>
+<p>一个流一旦发生错误，其上后续的IO操作都会失败。<strong>只有当一个流处于无错误状态时</strong>，我们才可以从它读取数据，向它写入数据。由于流可能处于错误状态，因此代码通常应该在使用一个流之前，检查它是否处于良好状态。确定一个流对象状态最简单的方法是，将它当作一个条件来使用，</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(cin &gt;&gt; word)</span><br><span class="line">  <span class="comment">// ok: 读取成功</span></span><br></pre></td></tr></table></figure>
 
 <p>while循环检查&gt;&gt;表达式返回的流的状态。如果输入操作成功，流保持有效状态，则条件为真。</p>
@@ -382,6 +388,47 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cin.<span class="built_in">clear</span>(cin.<span class="built_in">rdstate</span>() &amp; ~cin.failbit &amp; ~cin.badbit); <span class="comment">//将failbit和badbit复位，保持eofbit不变</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>管理输出缓冲</strong></p>
+<p>每个输出流都管理一个缓冲区，用来保存程序读写的数据。</p>
+<p>例如，如果执行下面的代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os &lt;&lt; <span class="string">&quot;please enter a value: &quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>文本串可能立即打印出来，但也有可能被操作系统保存在缓冲区中，随后再打印。</p>
+<p>有了缓冲机制，操作系统就可以将程序的多个输出操作组合成单一的系统级写操作。</p>
+<p>由于设备的写操作可能很耗时，<strong>允许操作系统将多个输出操作</strong>，<strong>组合为单一设备的写操作</strong>，可以带来很大的性能提升。</p>
+<p>导致缓冲刷新(即，数据真正写到输出设备或文件)的原因有很多：</p>
+<ol>
+<li><strong>程序正常结束</strong>，作为main函数的return操作的一部分，缓冲刷新被执行；</li>
+<li><strong>缓冲区满时</strong>，需要刷新缓冲，而后新的数据才能继续写入缓冲区；</li>
+<li>我们可以<strong>使用操纵符如endl</strong>来显式刷新缓冲区。</li>
+<li>在每个输出操作之后，我们可以<strong>用操纵符unitbuf设置流的内部状态，来清空缓冲区</strong>。默认情况下，对cerr是设置unitbuf的，因此写到cerr的内容都是立即刷新的；</li>
+<li><strong>一个输出流可能被关联到另一个流</strong>。在这种情况下，<strong>当读写被关联的流时，关联到的流的缓冲区会被刷新</strong>。例如，默认情况下，cin和cerr都关联到cout。因此，读cin或写cerr都会导致cout的缓冲区被刷新。</li>
+</ol>
+<p><strong>刷新输出缓冲区(解释3)</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cout &lt;&lt; <span class="string">&quot;hi!&quot;</span> &lt;&lt; endl;  <span class="comment">//输出hi和一个换行，然后刷新缓冲区</span></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;hi!&quot;</span> &lt;&lt; flush; <span class="comment">//输出hi，然后刷新缓冲区，不附加任何额外字符</span></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;hi!&quot;</span> &lt;&lt; ends;  <span class="comment">//输出hi和一个空字符，然后刷新缓冲区</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>unitbuf操纵符(解释4)</strong></p>
+<p>如果想在每次输出操作后都刷新缓冲区，我们可以使用<strong>unitbuf</strong>操纵符。它告诉流，在接下来的每次写操作之后都进行一次flush操作。而<strong>nonunitbuf</strong>操纵符则<strong>重置流</strong>，使其恢复使用正常的系统管理的缓冲区刷新机制。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cout &lt;&lt; unitbuf;    <span class="comment">//所有输出操作后会立即刷新缓冲区</span></span><br><span class="line">                    <span class="comment">//任何输出都立即刷新，无缓冲</span></span><br><span class="line">cout &lt;&lt; nonunitbuf; <span class="comment">//回到正常的缓冲方式</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>警告：如果程序崩溃，输出缓冲区不会被刷新</strong></p>
+<p>如果程序异常终止，输出缓冲区是不会被刷新的。</p>
+<p>当一个程序崩溃后，它所输出的数据很可能停留在输出缓冲区中等待打印。</p>
+<p>当调试一个已经崩溃的程序时，需要确认那些你认为已经输出的数据确实已经刷新了。否则，可能将大量时间浪费在追踪代码为什么没有执行上，而实际上代码已经执行了，只是程序崩溃后，缓冲区没有被刷新，输出数据被挂起没有打印而已。</p>
+<p><strong>关联输入和输出流(解释5)</strong></p>
+<p>当一个输入流被关联到一个输出流时，<strong>任何试图从输入流读取数据的操作都会先刷新关联的输出流</strong>。</p>
+<p>标准库将cout和cin关联在一起，因此下面语句</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cin &gt;&gt; ival;</span><br></pre></td></tr></table></figure>
+
+<p>导致cout的缓冲区被刷新。</p>
+<p><strong>Note.</strong> 交互式系统通常应该关联输入流和输出流。这意味着所有输出，包括用户提示信息，都会在读操作之前被打印出来。</p>
+<p><strong>tie有两个重载的版本</strong>：</p>
+<p><strong>第一个版本不带参数</strong>，返回指向输出流的指针。如果本对象当前关联到一个输出流，则返回的就是指向这个流的指针；如果本对象未关联到流，则返回空指针。</p>
+<p><strong>第二个版本接受一个指向ostream的指针</strong>，将自己关联到此ostream。即，x.tie(&amp;o)将流x关联到输出流o。</p>
+<p>我们既可以<strong>将一个istream对象关联到一个ostream</strong>，还可以<strong>将一个ostream对象关联到另一个ostream</strong>，</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cin.<span class="built_in">tie</span>(&amp;cout);   <span class="comment">//仅仅是用来展示: 标准库将cin和cout关联在一起</span></span><br><span class="line">ostream *old_tie = cin.<span class="built_in">tie</span>(<span class="literal">nullptr</span>); <span class="comment">//cin不再与其他流关联(用nullptr参数彻底解开了流的关联)</span></span><br><span class="line"><span class="comment">//old_tie指向当前关联到cin的流(如果有的话)(那么old_tie就是cout啦)</span></span><br><span class="line">cin.<span class="built_in">tie</span>(&amp;cerr);   <span class="comment">//读取cin会刷新cerr而不是cout(因为cin和cerr关联在一起了)</span></span><br><span class="line"><span class="comment">//将cin和cerr关联不是一个好主意，因为cin应该和cout关联在一起，这里仅作展示</span></span><br><span class="line">cin.<span class="built_in">tie</span>(old_tie); <span class="comment">//重建cin和cout间的正常关联(因为此时old_tie就是cout嘛)</span></span><br></pre></td></tr></table></figure>
+
+<p>每个流同时最多关联到一个流，但多个流可以同时关联到同一个ostream。</p>
+<p><strong>文件输入输出</strong></p>
 
       
     </div>
