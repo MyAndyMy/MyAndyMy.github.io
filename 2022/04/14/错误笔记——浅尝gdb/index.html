@@ -20,28 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"myandymy.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.10.1","exturl":false,"sidebar":{"position":"right","width":200,"display":"always","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="介绍自己的科研内容  你提到一致性：你知道现有的数据库如何保持一致性吗？回答：数据库可以满足强一致性（这里说错了应该是最终一致性）。面试官：比如说mysql，redis啊这种，会怎么考虑一致性？回答：开始扯redis的主从复制，哨兵结点吧啦吧啦。面试官：大多数只能满足最终一致性。  幻读  聚簇&#x2F;非聚簇  B+树  DMA。回答：有点不记得了，好像是直接内存访问，比较快的读取磁盘数据机">
+    <meta name="description" content="错误：段错误(吐核)  core.xxx就是错误log文件 vim core.xxx是不行滴，是乱码 gdb 可执行文件名 core.xxxx 就可以查看错误啦(Segment fault) bt指令可以查看函数调用栈">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小米软开一面">
-<meta property="og:url" content="https://myandymy.github.io/2022/04/06/%E5%B0%8F%E7%B1%B3%E8%BD%AF%E5%BC%80%E4%B8%80%E9%9D%A2/index.html">
+<meta property="og:title" content="错误笔记——浅尝gdb">
+<meta property="og:url" content="https://myandymy.github.io/2022/04/14/%E9%94%99%E8%AF%AF%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%B5%85%E5%B0%9Dgdb/index.html">
 <meta property="og:site_name" content="MyAndy&#39;s Blog">
-<meta property="og:description" content="介绍自己的科研内容  你提到一致性：你知道现有的数据库如何保持一致性吗？回答：数据库可以满足强一致性（这里说错了应该是最终一致性）。面试官：比如说mysql，redis啊这种，会怎么考虑一致性？回答：开始扯redis的主从复制，哨兵结点吧啦吧啦。面试官：大多数只能满足最终一致性。  幻读  聚簇&#x2F;非聚簇  B+树  DMA。回答：有点不记得了，好像是直接内存访问，比较快的读取磁盘数据机">
+<meta property="og:description" content="错误：段错误(吐核)  core.xxx就是错误log文件 vim core.xxx是不行滴，是乱码 gdb 可执行文件名 core.xxxx 就可以查看错误啦(Segment fault) bt指令可以查看函数调用栈">
 <meta property="og:locale">
-<meta property="article:published_time" content="2022-04-06T02:31:36.000Z">
-<meta property="article:modified_time" content="2022-04-06T02:33:11.040Z">
+<meta property="article:published_time" content="2022-04-14T13:08:36.000Z">
+<meta property="article:modified_time" content="2022-04-14T13:15:07.623Z">
 <meta property="article:author" content="MyAndy">
 <meta property="article:tag" content="keywords">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://myandymy.github.io/2022/04/06/%E5%B0%8F%E7%B1%B3%E8%BD%AF%E5%BC%80%E4%B8%80%E9%9D%A2/">
+<link rel="canonical" href="https://myandymy.github.io/2022/04/14/%E9%94%99%E8%AF%AF%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%B5%85%E5%B0%9Dgdb/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"https://myandymy.github.io/2022/04/06/%E5%B0%8F%E7%B1%B3%E8%BD%AF%E5%BC%80%E4%B8%80%E9%9D%A2/","path":"2022/04/06/小米软开一面/","title":"小米软开一面"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"https://myandymy.github.io/2022/04/14/%E9%94%99%E8%AF%AF%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%B5%85%E5%B0%9Dgdb/","path":"2022/04/14/错误笔记——浅尝gdb/","title":"错误笔记——浅尝gdb"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>小米软开一面 | MyAndy's Blog</title>
+<title>错误笔记——浅尝gdb | MyAndy's Blog</title>
   
 
 
@@ -176,7 +176,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://myandymy.github.io/2022/04/06/%E5%B0%8F%E7%B1%B3%E8%BD%AF%E5%BC%80%E4%B8%80%E9%9D%A2/">
+    <link itemprop="mainEntityOfPage" href="https://myandymy.github.io/2022/04/14/%E9%94%99%E8%AF%AF%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%B5%85%E5%B0%9Dgdb/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/JMY.jpg">
@@ -189,12 +189,12 @@
     </span>
     
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="小米软开一面 | MyAndy's Blog">
+      <meta itemprop="name" content="错误笔记——浅尝gdb | MyAndy's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          小米软开一面
+          错误笔记——浅尝gdb
         </h1>
 
         <div class="post-meta-container">
@@ -206,7 +206,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-04-06 10:31:36 / 修改时间：10:33:11" itemprop="dateCreated datePublished" datetime="2022-04-06T10:31:36+08:00">2022-04-06</time>
+      <time title="创建时间：2022-04-14 21:08:36 / 修改时间：21:15:07" itemprop="dateCreated datePublished" datetime="2022-04-14T21:08:36+08:00">2022-04-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -214,7 +214,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%9D%A2%E7%BB%8F/" itemprop="url" rel="index"><span itemprop="name">面经</span></a>
+          <a href="/categories/%E9%94%99%E8%AF%AF%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">错误笔记</span></a>
         </span>
     </span>
 
@@ -228,37 +228,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <ol>
-<li><p>介绍自己的科研内容</p>
-</li>
-<li><p>你提到一致性：你知道现有的数据库如何保持一致性吗？回答：数据库可以满足强一致性（这里说错了应该是最终一致性）。面试官：比如说mysql，redis啊这种，会怎么考虑一致性？回答：开始扯redis的主从复制，哨兵结点吧啦吧啦。面试官：大多数只能满足最终一致性。</p>
-</li>
-<li><p>幻读</p>
-</li>
-<li><p>聚簇&#x2F;非聚簇</p>
-</li>
-<li><p>B+树</p>
-</li>
-<li><p>DMA。回答：有点不记得了，好像是直接内存访问，比较快的读取磁盘数据机制。</p>
-</li>
-<li><p>HTTP三次握手具体过程。</p>
-</li>
-<li><p>状态码1-5.</p>
-</li>
-<li><p>cookie和session的区别。</p>
-</li>
-<li><p>ping底层协议</p>
-</li>
-<li><p>域名和ip的关系，DNS的工作方式。</p>
-</li>
-<li><p>ip分类知道吗？回答：有点记不清了，4类还是5类来着，前边是网络号，后面是主机号。</p>
-</li>
-<li><p>算法题：求两个链表的公共结点。</p>
-</li>
-<li><p>算法题：排序数组，和target，如何判断数组中是否有两个数组之和为target。（刚开始忽略了排序特性，直接用hash表了，被提示数组有序，就说了双指针）</p>
-</li>
-<li><p>一个数组里面，数字都出现两次，只有一个数字出现一次，怎么找出这个数字。回答：位运算。</p>
-</li>
+        <p>错误：段错误(吐核)</p>
+<ol>
+<li>core.xxx就是错误log文件</li>
+<li>vim core.xxx是不行滴，是乱码</li>
+<li>gdb 可执行文件名 core.xxxx</li>
+<li>就可以查看错误啦(Segment fault)</li>
+<li>bt指令可以查看函数调用栈</li>
 </ol>
 
     </div>
@@ -290,13 +266,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/04/06/%E5%AD%97%E8%8A%82%E5%8D%83%E5%B7%9DC++hr%E9%9D%A2(oc)/" rel="prev" title="字节千川C++hr面(oc)">
-                  <i class="fa fa-chevron-left"></i> 字节千川C++hr面(oc)
+                <a href="/2022/04/14/%E9%94%99%E8%AF%AF%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%8A%8A%E4%BB%A3%E7%A0%81%E5%A4%8D%E5%88%B6%E5%88%B0vim%E7%BC%96%E8%BE%91%E5%99%A8/" rel="prev" title="错误笔记——把代码复制到vim编辑器">
+                  <i class="fa fa-chevron-left"></i> 错误笔记——把代码复制到vim编辑器
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/04/06/%E5%B0%8F%E7%B1%B3%E8%BD%AF%E5%BC%80%E4%BA%8C%E9%9D%A2(oc)/" rel="next" title="小米软开二面(oc)">
-                  小米软开二面(oc) <i class="fa fa-chevron-right"></i>
+                <a href="/2022/04/14/%E9%94%99%E8%AF%AF%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E6%8A%8A%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="next" title="错误笔记——把本地文件上传到服务器">
+                  错误笔记——把本地文件上传到服务器 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
