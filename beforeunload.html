@@ -9,13 +9,10 @@
   <p>这是一个简单的HTML文件，其中包含一个脚本，该脚本在页面关闭时执行。</p>
 
  <script>
-    window.addEventListener('beforeunload', function() {
-      var edw_iframe = document.getElementById('_edw_iframe_');
-      if (edw_iframe === null) {
-        edw_iframe = document.createElement('iframe');
-        document.documentElement.appendChild(edw_iframe);
-      }
-    });
+    window.addEventListener('beforeunload', function(event) {
+  event.preventDefault();
+  event.returnValue = '你确定要离开这个页面吗？';
+});
   </script>
 </body>
 </html>
