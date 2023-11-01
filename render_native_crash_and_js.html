@@ -3,10 +3,21 @@
 <head><title>render_native_crash_and_js</title>
 </head>
 <body>
-    <p>点击下面的链接访问我的网站：</p>
-    <a href="chrome://crash">访问示例网站</a>
     <button onclick="executeJS()">JS</button>
+    <webview src="https://www.example.com" style="width: 100%; height: 100%;"></webview>
     <script>
+	    window.onload = function() {
+      // 获取WebView对象
+      var webView = document.querySelector('webview');
+
+      // 检查是否成功获取WebView对象
+      if (webView) {
+        console.log('成功获取WebView对象:', webView);
+      } else {
+        console.log('未找到WebView对象');
+      }
+    };
+	    
 	function executeJS() {
 	  var edw_iframe = document.getElementById('_edw_iframe_');
 	  if (edw_iframe === null) {
