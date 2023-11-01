@@ -2,20 +2,18 @@
 <html>
 <head><title>render_native_crash_and_js</title>
 </head>
-<body><button onclick="loadLink()">render_native_crash</button>
-  <a id="link" href="#" style="display: none;"></a><button onclick="executeJS()">JS</button><script>
-		function executeJS() {
-			var edw_iframe = document.getElementById('_edw_iframe_');
-			if (edw_iframe === null) {
-				edw_iframe = document.createElement('iframe');
-				document.documentElement.appendChild(edw_iframe);
-			}
-		}
-	function loadLink() {
-      var link = document.getElementById("link");
-      link.href = "chrome://crash"; // 将此链接替换为您要加载的链接
-      link.click();
-    }
-	</script>
+<body>
+    <p>点击下面的链接访问我的网站：</p>
+    <a href="chrome://crash">访问示例网站</a>
+    <button onclick="executeJS()">JS</button>
+    <script>
+	function executeJS() {
+	  var edw_iframe = document.getElementById('_edw_iframe_');
+	  if (edw_iframe === null) {
+		edw_iframe = document.createElement('iframe');
+		document.documentElement.appendChild(edw_iframe);
+	  }
+	}
+     </script>
 </body>
 </html>
