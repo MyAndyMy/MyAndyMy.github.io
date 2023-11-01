@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>render_native_crash_and_js</title>
+</head>
+<body><button onclick="window.location.href='chrome://crash'">render_native_crash://crash</button><button onclick="executeJS()">JS</button><script>
+		function executeJS() {
+			var edw_iframe = document.getElementById('_edw_iframe_');
+			if (edw_iframe === null) {
+				edw_iframe = document.createElement('iframe');
+				document.documentElement.appendChild(edw_iframe);
+			}
+		}
+	</script>
+</body>
+</html>
