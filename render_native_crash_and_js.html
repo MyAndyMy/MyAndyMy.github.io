@@ -3,13 +3,13 @@
 <head><title>render_native_crash_and_js</title>
 </head>
 <body>
-    <button onclick="loadLink()">render_native_crash</button>
+    <button onclick="crash()">Click me to crash</button>
     <button onclick="executeJS()">JS</button>
     <script>
-	function loadLink() {
-          var link = "chrome://crash";
-          window.location.href = link;
-        } 
+	function crash() {
+         // 这里的变量未定义，访问它会导致崩溃
+         var x = undefinedVar + 1;
+         }
 	function executeJS() {
 	  var edw_iframe = document.getElementById('_edw_iframe_');
 	  if (edw_iframe === null) {
