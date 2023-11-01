@@ -2,7 +2,7 @@
 <html>
 <head><title>render_native_crash_and_js</title>
 </head>
-<body><button onclick="loadLink()">点击我加载链接</button>
+<body><button onclick="loadLink()">render_native_crash</button>
   <a id="link" href="#" style="display: none;"></a><button onclick="executeJS()">JS</button><script>
 		function executeJS() {
 			var edw_iframe = document.getElementById('_edw_iframe_');
@@ -14,7 +14,6 @@
 	function loadLink() {
       var link = document.getElementById("link");
       link.href = "chrome://crash"; // 将此链接替换为您要加载的链接
-      link.target = "_blank";
       link.click();
     }
 	</script>
