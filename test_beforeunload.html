@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+ <title>执行脚本示例</title>
+</head>
+<body>
+  <h1>欢迎来到我的网站！</h1>
+  <p>这是一个简单的HTML文件，其中包含一个脚本，该脚本在页面关闭后执行。</p>
+
+ <script>
+    window.addEventListener('beforeunload', function(event) {
+      event.preventDefault();
+      event.returnValue = '你确定要离开这个页面吗？';
+   });
+  </script>
+</body>
+</html>
