@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebAssembly Demo</title>
+</head>
+<body>
+  <h1>WebAssembly Demo</h1>
+  <p>Result: <span id="result"></span></p>
+
+  <script>
+    async function loadAndRunWasm() {
+      const response = await fetch('add.wasm');
+      const buffer = await response.arrayBuffer();
+      const module = await WebAssembly.compile(buffer);
+      const instance = await WebAssembly.instantiate(module);
+      const result = instance.exports.add(1, 2);
+      document.getElementById('result').textContent = result;
+    }
+
+    loadAndRunWasm();
+  </script>
+</body>
+</html>
