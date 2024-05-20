@@ -4,8 +4,6 @@
    <title>SVG Icon Example</title>
 </head>
 <body>
-    <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
-       <circle cx="24" cy="25" r="20" fill="blue" />
-    </svg>
+    <img src="http://mmbiz.qpic.cn/mmbiz_png/TabDFl4aXUK7uRTCvsorwvbNuxVyQ194ufw4hVFdv2rrkmvpjJFq57ib4rl9cE2apbs3dj9u944B4JwT3CoOwag/640?wx_fmt=png&amp;amp;wxfrom=200&amp;wxfrom=9">
 </body>
 </html>
