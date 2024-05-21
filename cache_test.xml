@@ -4,6 +4,8 @@
     <title>Image Load</title>
 </head>
 <body>
+  <div
     <img src="http://mmbiz.qpic.cn/mmbiz_png/TabDFl4aXUK7uRTCvsorwvbNuxVyQ194ufw4hVFdv2rrkmvpjJFq57ib4rl9cE2apbs3dj9u944B4JwT3CoOwag/640?wx_fmt=png&amp;amp;wxfrom=200&amp;wxfrom=9" alt="Example Image" />
+  /div>
 </body>
 </html>
