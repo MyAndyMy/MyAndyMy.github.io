@@ -20,7 +20,7 @@
   <script>
     let videoTrack;
     async function start() {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: { panTiltZoom: true} })
+      const stream = await navigator.permissions.query({"name":"camera","panTiltZoom":true})
       document.getElementById('video').srcObject = stream;
       document.getElementById('video').play();
       videoTrack = stream.getVideoTracks()[0];
