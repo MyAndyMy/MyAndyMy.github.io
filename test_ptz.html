@@ -18,39 +18,19 @@
   <input type="range" id="zoom" value="1" onchange="onChange()">
   <input type="range" id="focus-distance" value="1" onchange="onFocusDistanceChange()">
   <script>
-    let videoTrack;
     async function start() {
-      const stream = await navigator.permissions.query({"name":"camera","panTiltZoom":true})
-      document.getElementById('video').srcObject = stream;
-      document.getElementById('video').play();
-      videoTrack = stream.getVideoTracks()[0];
-      const { zoom, focusDistance } = videoTrack.getCapabilities();
-      document.getElementById('supported').innerText = !!zoom;
-      document.getElementById('focus-distance-supported').innerText = !!focusDistance;
-      if (focusDistance) {
-        document.getElementById('focus-distance-capability').innerText = JSON.stringify(focusDistance);
-        document.getElementById('focus-distance').min = focusDistance.min;
-        document.getElementById('focus-distance').max = focusDistance.max;
-        document.getElementById('focus-distance').step = focusDistance.step;
-      }
-      if (zoom) {
-        document.getElementById('zoom-capability').innerText = JSON.stringify(zoom);
-        document.getElementById('zoom').min = zoom.min;
-        document.getElementById('zoom').max = zoom.max;
-        document.getElementById('zoom').step = zoom.step;
-      }
+      navigator.permissions.query({"name":"camera","panTiltZoom":true}).then((result) => {
+  if (result.state === "granted") {
+    console.log("yes");
+  } else if (result.state === "prompt") {
+    console.log("no");
+  }
+  // Don't do anything if the permission was denied.
+});
+
     }
 
-    function onChange() {
-      if (videoTrack) {
-        videoTrack.applyConstraints({ zoom: +document.getElementById('zoom').value });
-      }
-    }
-    function onFocusDistanceChange() {
-      if (videoTrack) {
-        videoTrack.applyConstraints({ focusDistance: +document.getElementById('focus-distance').value });
-      }
-    }
+  
   </script>
 
 
