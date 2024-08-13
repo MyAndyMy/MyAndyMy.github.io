@@ -1,0 +1,39 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <video id="video"></video>
+  <button onclick="start()">开启摄像头</button>
+  <div>
+    是否支持 zoom:
+    <div id="supported"></div>
+    <div id="zoom-capability"></div>
+    是否支持 focusDistance:
+    <div id="focus-distance-supported"></div>
+    <div id="focus-distance-capability"></div>
+  </div>
+  <input type="range" id="zoom" value="1" onchange="onChange()">
+  <input type="range" id="focus-distance" value="1" onchange="onFocusDistanceChange()">
+  <script>
+    try {
+  // User is prompted to grant both camera and PTZ access in a single call.
+  // If camera doesn't support PTZ, it falls back to a regular camera prompt.
+  const stream = await navigator.mediaDevices.getUserMedia({
+    // Website asks to control camera PTZ as well without altering the
+    // current pan, tilt, and zoom settings.
+    video: { pan: true, tilt: true, zoom: true }
+  });
+
+  // Show camera video stream to user.
+  document.querySelector("video").srcObject = stream;
+} catch (error) {
+  // User denies prompt or matching media is not available.
+  console.log(error);
+}
+  </script>
+
+
+</body></html>
