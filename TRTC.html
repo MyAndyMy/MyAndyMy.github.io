@@ -1,0 +1,71 @@
+<html lang="en"><head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>TRTC Web SDK Samples - 基础音视频通话</title>
+</head>
+
+<body>
+  <button id="multi-play" type="button" class="btn btn-raised btn-primary rtc-primary-bg">连续播放音频（原生）</button>
+  <button id="resume3" type="button" class="btn btn-raised btn-primary rtc-primary-bg">手动恢复播放</button>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vConsole/3.9.5/vconsole.min.js"></script>
+  <script>
+    const vConsole = new window.VConsole();
+  </script>
+
+
+
+
+<script>
+  window.addEventListener('load', () => {
+    document.getElementById('multi-play').addEventListener('click', handleMultiPlay);
+    document.getElementById('resume3').addEventListener('click', handleResume3);
+  });
+
+  const audioElements = [];
+
+  function handleResume3() {
+    audioElements[2].play();
+  }
+
+  async function handleMultiPlay() {
+    const audioUrls = [
+      './music/trtc-test-1.mp3',
+      './music/trtc-test-2.mp3',
+      './music/trtc-test-3.mp3',
+      './music/trtc-test-4.mp3'
+    ];
+
+    
+
+    await playAudioAsync();
+
+    async function preloadingAudio(audioElement) {
+      return new Promise(resolve => audioElement.oncanplay = resolve);
+    }
+
+    async function playAudioAsync() {
+        audioElements[0] = new Audio(audioUrls[0]);
+        audioElement[0].onended  = function() {
+            audioElements[1] = new Audio(audioUrls[1]);
+            audioElement[1].play();
+          };
+        audioElement[1].onended  = function() {
+            audioElements[2] = new Audio(audioUrls[2]);
+            audioElement[2].play();
+          };
+        audioElement[0].play();
+    }
+
+    function addLogForAudio(audioElement) {
+      audioElement.onloadstart = () => console.log(`音频 ${audioElement.src} 开始加载`);
+      audioElement.onplaying = () => console.log(`音频 ${audioElement.src} 正在播放`);
+      audioElement.onpause = () => console.log(`音频 ${audioElement.src} 已暂停 - 当前时间: ${audioElement.currentTime.toFixed(2)}s`);
+      audioElement.onwaiting = () => console.log(`音频 ${audioElement.src} 正在等待数据`);
+      audioElement.onstalled = () => console.log(`音频 ${audioElement.src} 数据获取被阻止`);
+      audioElement.onsuspend = () => console.log(`音频 ${audioElement.src} 加载被暂停`);
+      audioElement.onerror = (e) => console.error(`音频 ${audioElement.src} 播放出错:`, e);
+      audioElement.onended = () => console.log(`音频 ${audioElement.src} 播放结束`);
+    }
+  }
+</script></body></html>
