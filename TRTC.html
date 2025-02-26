@@ -802,7 +802,806 @@
 .vcelm-l.vcelm-noc:before {
   display: none;
 }
-</style><style id="svelte-dhd3ex-style">.tab-list.svelte-dhd3ex.svelte-dhd3ex{position:fixed;width:100%}.table.svelte-dhd3ex.svelte-dhd3ex{margin:0 8px;padding-top:2.30769231em}.row.svelte-dhd3ex.svelte-dhd3ex{display:flex}.row.svelte-dhd3ex .item,.row.svelte-dhd3ex .action{line-height:2;border:1px solid var(--VC-FG-3)}.row.svelte-dhd3ex .item{flex:2;overflow-x:hidden;text-overflow:ellipsis}.row :global(.item).btn{text-align:center}.row.svelte-dhd3ex .item-key{flex:1}.row.svelte-dhd3ex .action.svelte-dhd3ex{flex:1;display:flex;justify-content:space-evenly}.row.svelte-dhd3ex .action div.svelte-dhd3ex{flex:1;text-align:center}.row.svelte-dhd3ex .action div.svelte-dhd3ex:hover{background:var(--VC-BG-3)}.row.svelte-dhd3ex .action div.svelte-dhd3ex:active{background:var(--VC-BG-1)}.row-empty.svelte-dhd3ex.svelte-dhd3ex{text-align:center}</style><style id="svelte-sp52j5-style">.tab-list.svelte-sp52j5{display:flex;justify-content:space-evenly}</style><style id="svelte-wph4en-style">button.svelte-wph4en{outline:none;flex:1;background:var(--VC-BG-1);border:none;border-bottom:1px solid var(--VC-FG-3);border-radius:0;margin:0;color:var(--VC-FG-0);line-height:2.30769231em}button.svelte-wph4en:hover{background:var(--VC-BG-2)}button.svelte-wph4en:active{background:var(--VC-BG-0)}.selected.svelte-wph4en{border-bottom:1px solid var(--VC-INDIGO)}</style><style id="svelte-1nkk86e-style">button.svelte-1nkk86e{background:var(--VC-BG-1);color:var(--VC-FG-1)}button.svelte-1nkk86e:hover{background:var(--VC-BG-2)}button.svelte-1nkk86e:active{background:var(--VC-BG-0)}</style></head>
+</style><style id="svelte-dhd3ex-style">.tab-list.svelte-dhd3ex.svelte-dhd3ex{position:fixed;width:100%}.table.svelte-dhd3ex.svelte-dhd3ex{margin:0 8px;padding-top:2.30769231em}.row.svelte-dhd3ex.svelte-dhd3ex{display:flex}.row.svelte-dhd3ex .item,.row.svelte-dhd3ex .action{line-height:2;border:1px solid var(--VC-FG-3)}.row.svelte-dhd3ex .item{flex:2;overflow-x:hidden;text-overflow:ellipsis}.row :global(.item).btn{text-align:center}.row.svelte-dhd3ex .item-key{flex:1}.row.svelte-dhd3ex .action.svelte-dhd3ex{flex:1;display:flex;justify-content:space-evenly}.row.svelte-dhd3ex .action div.svelte-dhd3ex{flex:1;text-align:center}.row.svelte-dhd3ex .action div.svelte-dhd3ex:hover{background:var(--VC-BG-3)}.row.svelte-dhd3ex .action div.svelte-dhd3ex:active{background:var(--VC-BG-1)}.row-empty.svelte-dhd3ex.svelte-dhd3ex{text-align:center}</style><style id="svelte-sp52j5-style">.tab-list.svelte-sp52j5{display:flex;justify-content:space-evenly}</style><style id="svelte-wph4en-style">button.svelte-wph4en{outline:none;flex:1;background:var(--VC-BG-1);border:none;border-bottom:1px solid var(--VC-FG-3);border-radius:0;margin:0;color:var(--VC-FG-0);line-height:2.30769231em}button.svelte-wph4en:hover{background:var(--VC-BG-2)}button.svelte-wph4en:active{background:var(--VC-BG-0)}.selected.svelte-wph4en{border-bottom:1px solid var(--VC-INDIGO)}</style><style id="svelte-1nkk86e-style">button.svelte-1nkk86e{background:var(--VC-BG-1);color:var(--VC-FG-1)}button.svelte-1nkk86e:hover{background:var(--VC-BG-2)}button.svelte-1nkk86e:active{background:var(--VC-BG-0)}</style><style>#__vconsole {
+  --VC-BG-0: #ededed;
+  --VC-BG-1: #f7f7f7;
+  --VC-BG-2: #fff;
+  --VC-BG-3: #f7f7f7;
+  --VC-BG-4: #4c4c4c;
+  --VC-BG-5: #fff;
+  --VC-BG-6: rgba(0, 0, 0, 0.1);
+  --VC-FG-0: rgba(0, 0, 0, 0.9);
+  --VC-FG-HALF: rgba(0, 0, 0, 0.9);
+  --VC-FG-1: rgba(0, 0, 0, 0.5);
+  --VC-FG-2: rgba(0, 0, 0, 0.3);
+  --VC-FG-3: rgba(0, 0, 0, 0.1);
+  --VC-RED: #fa5151;
+  --VC-ORANGE: #fa9d3b;
+  --VC-YELLOW: #ffc300;
+  --VC-GREEN: #91d300;
+  --VC-LIGHTGREEN: #95ec69;
+  --VC-BRAND: #07c160;
+  --VC-BLUE: #10aeff;
+  --VC-INDIGO: #1485ee;
+  --VC-PURPLE: #6467f0;
+  --VC-LINK: #576b95;
+  --VC-TEXTGREEN: #06ae56;
+  --VC-FG: black;
+  --VC-BG: white;
+  --VC-BG-COLOR-ACTIVE: #ececec;
+  --VC-WARN-BG: #fff3cc;
+  --VC-WARN-BORDER: #ffe799;
+  --VC-ERROR-BG: #fedcdc;
+  --VC-ERROR-BORDER: #fdb9b9;
+  --VC-DOM-TAG-NAME-COLOR: #881280;
+  --VC-DOM-ATTRIBUTE-NAME-COLOR: #994500;
+  --VC-DOM-ATTRIBUTE-VALUE-COLOR: #1a1aa6;
+  --VC-CODE-KEY-FG: #881391;
+  --VC-CODE-PRIVATE-KEY-FG: #cfa1d3;
+  --VC-CODE-FUNC-FG: #0d22aa;
+  --VC-CODE-NUMBER-FG: #1c00cf;
+  --VC-CODE-STR-FG: #c41a16;
+  --VC-CODE-NULL-FG: #808080;
+  color: var(--VC-FG-0);
+  font-size: 13px;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  -webkit-user-select: auto;
+  /* global */
+  /* compoment */
+}
+#__vconsole .vc-max-height {
+  max-height: 19.23076923em;
+}
+#__vconsole .vc-max-height-line {
+  max-height: 3.38461538em;
+}
+#__vconsole .vc-min-height {
+  min-height: 3.07692308em;
+}
+#__vconsole dd,
+#__vconsole dl,
+#__vconsole pre {
+  margin: 0;
+}
+#__vconsole .vc-switch {
+  display: block;
+  position: fixed;
+  right: 0.76923077em;
+  bottom: 0.76923077em;
+  color: #FFF;
+  background-color: var(--VC-BRAND);
+  line-height: 1;
+  font-size: 1.07692308em;
+  padding: 0.61538462em 1.23076923em;
+  z-index: 10000;
+  border-radius: 0.30769231em;
+  box-shadow: 0 0 0.61538462em rgba(0, 0, 0, 0.4);
+}
+#__vconsole .vc-mask {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 10001;
+  -webkit-transition: background 0.3s;
+  transition: background 0.3s;
+  -webkit-tap-highlight-color: transparent;
+  overflow-y: scroll;
+}
+#__vconsole .vc-panel {
+  display: none;
+  position: fixed;
+  min-height: 85%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10002;
+  background-color: var(--VC-BG-0);
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+  -webkit-transform: translate(0, 100%);
+  transform: translate(0, 100%);
+}
+#__vconsole .vc-tabbar {
+  border-bottom: 1px solid var(--VC-FG-3);
+  overflow-x: auto;
+  height: 3em;
+  width: auto;
+  white-space: nowrap;
+}
+#__vconsole .vc-tabbar .vc-tab {
+  display: inline-block;
+  line-height: 3em;
+  padding: 0 1.15384615em;
+  border-right: 1px solid var(--VC-FG-3);
+  text-decoration: none;
+  color: var(--VC-FG-0);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+#__vconsole .vc-tabbar .vc-tab:active {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+#__vconsole .vc-tabbar .vc-tab.vc-actived {
+  background-color: var(--VC-BG-1);
+}
+#__vconsole .vc-content {
+  background-color: var(--VC-BG-2);
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: absolute;
+  top: 3.07692308em;
+  left: 0;
+  right: 0;
+  bottom: 3.07692308em;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: constant(safe-area-inset-bottom);
+  margin-bottom: env(safe-area-inset-bottom);
+}
+#__vconsole .vc-content.vc-has-topbar {
+  top: 5.46153846em;
+}
+#__vconsole .vc-topbar {
+  background-color: var(--VC-BG-1);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-box-orient: horizontal;
+  -moz-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 100%;
+}
+#__vconsole .vc-topbar .vc-toptab {
+  display: none;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  line-height: 2.30769231em;
+  padding: 0 1.15384615em;
+  border-bottom: 1px solid var(--VC-FG-3);
+  text-decoration: none;
+  text-align: center;
+  color: var(--VC-FG-0);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+#__vconsole .vc-topbar .vc-toptab.vc-toggle {
+  display: block;
+}
+#__vconsole .vc-topbar .vc-toptab:active {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+#__vconsole .vc-topbar .vc-toptab.vc-actived {
+  border-bottom: 1px solid var(--VC-INDIGO);
+}
+#__vconsole .vc-logbox {
+  display: none;
+  position: relative;
+  min-height: 100%;
+}
+#__vconsole .vc-logbox i {
+  font-style: normal;
+}
+#__vconsole .vc-logbox .vc-log {
+  padding-bottom: 6em;
+  -webkit-tap-highlight-color: transparent;
+}
+#__vconsole .vc-logbox .vc-log:empty:before {
+  content: "Empty";
+  color: var(--VC-FG-1);
+  position: absolute;
+  top: 45%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 1.15384615em;
+  text-align: center;
+}
+#__vconsole .vc-logbox .vc-item {
+  margin: 0;
+  padding: 0.46153846em 0.61538462em;
+  overflow: hidden;
+  line-height: 1.3;
+  border-bottom: 1px solid var(--VC-FG-3);
+  word-break: break-word;
+}
+#__vconsole .vc-logbox .vc-item-info {
+  color: var(--VC-PURPLE);
+}
+#__vconsole .vc-logbox .vc-item-debug {
+  color: var(--VC-YELLOW);
+}
+#__vconsole .vc-logbox .vc-item-warn {
+  color: var(--VC-ORANGE);
+  border-color: var(--VC-WARN-BORDER);
+  background-color: var(--VC-WARN-BG);
+}
+#__vconsole .vc-logbox .vc-item-error {
+  color: var(--VC-RED);
+  border-color: var(--VC-ERROR-BORDER);
+  background-color: var(--VC-ERROR-BG);
+}
+#__vconsole .vc-logbox .vc-log.vc-log-partly .vc-item {
+  display: none;
+}
+#__vconsole .vc-logbox .vc-log.vc-log-partly-log .vc-item-log,
+#__vconsole .vc-logbox .vc-log.vc-log-partly-info .vc-item-info,
+#__vconsole .vc-logbox .vc-log.vc-log-partly-warn .vc-item-warn,
+#__vconsole .vc-logbox .vc-log.vc-log-partly-error .vc-item-error {
+  display: block;
+}
+#__vconsole .vc-logbox .vc-item.hide {
+  display: none !important;
+}
+#__vconsole .vc-logbox .vc-item .vc-item-content {
+  margin-right: 4.61538462em;
+}
+#__vconsole .vc-logbox .vc-item i {
+  white-space: pre-line;
+}
+#__vconsole .vc-logbox .vc-item .vc-item-repeat {
+  float: left;
+  margin-right: 0.30769231em;
+  padding: 0 6.5px;
+  color: #D7E0EF;
+  background-color: #42597F;
+  border-radius: 8.66666667px;
+}
+#__vconsole .vc-logbox .vc-item.vc-item-error .vc-item-repeat {
+  color: #901818;
+  background-color: var(--VC-RED);
+}
+#__vconsole .vc-logbox .vc-item.vc-item-warn .vc-item-repeat {
+  color: #987D20;
+  background-color: #F4BD02;
+}
+#__vconsole .vc-logbox .vc-item .vc-item-code {
+  display: block;
+  white-space: pre-wrap;
+  overflow: auto;
+  position: relative;
+}
+#__vconsole .vc-logbox .vc-item .vc-item-code.vc-item-code-input,
+#__vconsole .vc-logbox .vc-item .vc-item-code.vc-item-code-output {
+  padding-left: 0.92307692em;
+}
+#__vconsole .vc-logbox .vc-item .vc-item-code.vc-item-code-input:before,
+#__vconsole .vc-logbox .vc-item .vc-item-code.vc-item-code-output:before {
+  content: "›";
+  position: absolute;
+  top: -0.23076923em;
+  left: 0;
+  font-size: 1.23076923em;
+  color: #6A5ACD;
+}
+#__vconsole .vc-logbox .vc-item .vc-item-code.vc-item-code-output:before {
+  content: "‹";
+}
+#__vconsole .vc-logbox .vc-item .vc-fold {
+  display: block;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+#__vconsole .vc-logbox .vc-item .vc-fold .vc-fold-outer {
+  display: block;
+  font-style: italic;
+  padding-left: 0.76923077em;
+  position: relative;
+}
+#__vconsole .vc-logbox .vc-item .vc-fold .vc-fold-outer:active {
+  background-color: var(--VC-BG-COLOR-ACTIVE);
+}
+#__vconsole .vc-logbox .vc-item .vc-fold .vc-fold-outer:before {
+  content: "";
+  position: absolute;
+  top: 0.30769231em;
+  left: 0.15384615em;
+  width: 0;
+  height: 0;
+  border: transparent solid 0.30769231em;
+  border-left-color: var(--VC-FG-1);
+}
+#__vconsole .vc-logbox .vc-item .vc-fold .vc-fold-outer.vc-toggle:before {
+  top: 0.46153846em;
+  left: 0;
+  border-top-color: var(--VC-FG-1);
+  border-left-color: transparent;
+}
+#__vconsole .vc-logbox .vc-item .vc-fold .vc-fold-inner {
+  display: none;
+  margin-left: 0.76923077em;
+}
+#__vconsole .vc-logbox .vc-item .vc-fold .vc-fold-inner.vc-toggle {
+  display: block;
+}
+#__vconsole .vc-logbox .vc-item .vc-fold .vc-fold-inner .vc-code-key {
+  margin-left: 0.76923077em;
+}
+#__vconsole .vc-logbox .vc-item .vc-fold .vc-fold-outer .vc-code-key {
+  margin-left: 0;
+}
+#__vconsole .vc-logbox .vc-item-copy {
+  float: right;
+  word-break: normal;
+  white-space: normal;
+  width: 16px;
+  height: 16px;
+}
+#__vconsole .vc-logbox .vc-item-copy .vc-icon-clippy {
+  display: block;
+  fill: var(--VC-FG-2);
+  width: 16px;
+  height: 16px;
+}
+#__vconsole .vc-logbox .vc-item-copy .vc-icon-check {
+  display: none;
+  fill: var(--VC-TEXTGREEN);
+  width: 16px;
+  height: 16px;
+}
+#__vconsole .vc-logbox .vc-item-copy-success .vc-icon-clippy {
+  display: none;
+}
+#__vconsole .vc-logbox .vc-item-copy-success .vc-icon-check {
+  display: block;
+}
+#__vconsole .vc-logbox .vc-item-delete {
+  float: right;
+  word-break: normal;
+  white-space: normal;
+  margin-left: 4px;
+  width: 16px;
+  height: 16px;
+}
+#__vconsole .vc-logbox .vc-item-delete .vc-icon-delete {
+  fill: var(--VC-FG-2);
+  width: 16px;
+  height: 16px;
+}
+#__vconsole .vc-logbox .vc-item-tips {
+  background-color: var(--VC-BG-6);
+  color: var(--VC-FG-0);
+  font-size: 0.84615385em;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+#__vconsole .vc-logbox .vc-code-key {
+  color: var(--VC-CODE-KEY-FG);
+}
+#__vconsole .vc-logbox .vc-code-private-key {
+  color: var(--VC-CODE-PRIVATE-KEY-FG);
+}
+#__vconsole .vc-logbox .vc-code-function {
+  color: var(--VC-CODE-FUNC-FG);
+  font-style: italic;
+}
+#__vconsole .vc-logbox .vc-code-number,
+#__vconsole .vc-logbox .vc-code-bigint,
+#__vconsole .vc-logbox .vc-code-boolean {
+  color: var(--VC-CODE-NUMBER-FG);
+}
+#__vconsole .vc-logbox .vc-code-string {
+  color: var(--VC-CODE-STR-FG);
+  white-space: normal;
+}
+#__vconsole .vc-logbox .vc-code-null,
+#__vconsole .vc-logbox .vc-code-undefined {
+  color: var(--VC-CODE-NULL-FG);
+}
+#__vconsole .vc-logbox .vc-code-symbol {
+  color: var(--VC-CODE-STR-FG);
+}
+#__vconsole .vc-logbox .vc-cmd {
+  position: absolute;
+  height: 3.07692308em;
+  left: 0;
+  right: 0;
+  bottom: 3.07692308em;
+  border-top: 1px solid var(--VC-FG-3);
+  display: block!important;
+}
+#__vconsole .vc-logbox .vc-cmd.vc-filter {
+  bottom: 0;
+}
+#__vconsole .vc-logbox .vc-cmd .vc-cmd-input-wrap {
+  display: block;
+  height: 2.15384615em;
+  margin-right: 3.07692308em;
+  padding: 0.46153846em 0.61538462em;
+}
+#__vconsole .vc-logbox .vc-cmd .vc-cmd-input {
+  width: 100%;
+  border: none;
+  resize: none;
+  outline: none;
+  padding: 0;
+  font-size: 0.92307692em;
+  background-color: transparent;
+  color: var(--VC-FG-0);
+}
+#__vconsole .vc-logbox .vc-cmd .vc-cmd-input::-webkit-input-placeholder {
+  line-height: 2.15384615em;
+}
+#__vconsole .vc-logbox .vc-cmd .vc-cmd-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 3.07692308em;
+  border: none;
+  background-color: var(--VC-BG-0);
+  color: var(--VC-FG-0);
+  outline: none;
+  -webkit-touch-callout: none;
+  font-size: 1em;
+}
+#__vconsole .vc-logbox .vc-cmd .vc-cmd-btn:active {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+#__vconsole .vc-logbox .vc-cmd .vc-cmd-prompted {
+  position: fixed;
+  width: 100%;
+  background-color: var(--VC-BG-3);
+  border: 1px solid var(--VC-FG-3);
+  overflow-x: scroll;
+  display: none;
+}
+#__vconsole .vc-logbox .vc-cmd .vc-cmd-prompted li {
+  list-style: none;
+  line-height: 30px;
+  padding: 0 0.46153846em;
+  border-bottom: 1px solid var(--VC-FG-3);
+}
+#__vconsole .vc-logbox .vc-group .vc-group-preview {
+  -webkit-touch-callout: none;
+}
+#__vconsole .vc-logbox .vc-group .vc-group-preview:active {
+  background-color: var(--VC-BG-COLOR-ACTIVE);
+}
+#__vconsole .vc-logbox .vc-group .vc-group-detail {
+  display: none;
+  padding: 0 0 0.76923077em 1.53846154em;
+  border-bottom: 1px solid var(--VC-FG-3);
+}
+#__vconsole .vc-logbox .vc-group.vc-actived .vc-group-detail {
+  display: block;
+  background-color: var(--VC-BG-1);
+}
+#__vconsole .vc-logbox .vc-group.vc-actived .vc-table-row {
+  background-color: var(--VC-BG-2);
+}
+#__vconsole .vc-logbox .vc-group.vc-actived .vc-group-preview {
+  background-color: var(--VC-BG-1);
+}
+#__vconsole .vc-logbox .vc-table .vc-table-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-box-orient: horizontal;
+  -moz-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  overflow: hidden;
+  border-bottom: 1px solid var(--VC-FG-3);
+}
+#__vconsole .vc-logbox .vc-table .vc-table-row.vc-left-border {
+  border-left: 1px solid var(--VC-FG-3);
+}
+#__vconsole .vc-logbox .vc-table .vc-table-col {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 0.23076923em 0.30769231em;
+  border-left: 1px solid var(--VC-FG-3);
+  overflow: auto;
+}
+#__vconsole .vc-logbox .vc-table .vc-table-col:first-child {
+  border: none;
+}
+#__vconsole .vc-logbox .vc-table .vc-table-col-value {
+  white-space: pre-wrap;
+  word-break: break-word;
+  /*white-space: nowrap;
+        text-overflow: ellipsis;*/
+  -webkit-overflow-scrolling: touch;
+}
+#__vconsole .vc-logbox .vc-table .vc-small .vc-table-col {
+  padding: 0 0.30769231em;
+  font-size: 0.92307692em;
+}
+#__vconsole .vc-logbox .vc-table .vc-table-col-2 {
+  -webkit-box-flex: 2;
+  -webkit-flex: 2;
+  -moz-box-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+}
+#__vconsole .vc-logbox .vc-table .vc-table-col-3 {
+  -webkit-box-flex: 3;
+  -webkit-flex: 3;
+  -moz-box-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+}
+#__vconsole .vc-logbox .vc-table .vc-table-col-4 {
+  -webkit-box-flex: 4;
+  -webkit-flex: 4;
+  -moz-box-flex: 4;
+  -ms-flex: 4;
+  flex: 4;
+}
+#__vconsole .vc-logbox .vc-table .vc-table-col-5 {
+  -webkit-box-flex: 5;
+  -webkit-flex: 5;
+  -moz-box-flex: 5;
+  -ms-flex: 5;
+  flex: 5;
+}
+#__vconsole .vc-logbox .vc-table .vc-table-col-6 {
+  -webkit-box-flex: 6;
+  -webkit-flex: 6;
+  -moz-box-flex: 6;
+  -ms-flex: 6;
+  flex: 6;
+}
+#__vconsole .vc-logbox .vc-table .vc-table-row-error {
+  border-color: var(--VC-ERROR-BORDER);
+  background-color: var(--VC-ERROR-BG);
+}
+#__vconsole .vc-logbox .vc-table .vc-table-row-error .vc-table-col {
+  color: var(--VC-RED);
+  border-color: var(--VC-ERROR-BORDER);
+}
+#__vconsole .vc-logbox .vc-table .vc-table-col-title {
+  font-weight: bold;
+}
+#__vconsole .vc-logbox.vc-actived {
+  display: block;
+}
+#__vconsole .vc-toolbar {
+  border-top: 1px solid var(--VC-FG-3);
+  line-height: 3em;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-box-orient: horizontal;
+  -moz-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+#__vconsole .vc-toolbar .vc-tool {
+  display: none;
+  text-decoration: none;
+  color: var(--VC-FG-0);
+  width: 50%;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: center;
+  position: relative;
+  -webkit-touch-callout: none;
+}
+#__vconsole .vc-toolbar .vc-tool.vc-toggle,
+#__vconsole .vc-toolbar .vc-tool.vc-global-tool {
+  display: block;
+}
+#__vconsole .vc-toolbar .vc-tool:active {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+#__vconsole .vc-toolbar .vc-tool:after {
+  content: " ";
+  position: absolute;
+  top: 0.53846154em;
+  bottom: 0.53846154em;
+  right: 0;
+  border-left: 1px solid var(--VC-FG-3);
+}
+#__vconsole .vc-toolbar .vc-tool-last:after {
+  border: none;
+}
+@supports (bottom: constant(safe-area-inset-bottom)) or (bottom: env(safe-area-inset-bottom)) {
+  #__vconsole .vc-toolbar,
+  #__vconsole .vc-switch {
+    bottom: constant(safe-area-inset-bottom);
+    bottom: env(safe-area-inset-bottom);
+  }
+}
+#__vconsole.vc-toggle .vc-switch {
+  display: none;
+}
+#__vconsole.vc-toggle .vc-mask {
+  background: rgba(0, 0, 0, 0.6);
+  display: block;
+}
+#__vconsole.vc-toggle .vc-panel {
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+@media (prefers-color-scheme: dark) {
+  #__vconsole:not([data-theme="light"]) {
+    --VC-BG-0: #191919;
+    --VC-BG-1: #1f1f1f;
+    --VC-BG-2: #232323;
+    --VC-BG-3: #2f2f2f;
+    --VC-BG-4: #606060;
+    --VC-BG-5: #2c2c2c;
+    --VC-BG-6: rgba(255, 255, 255, 0.2);
+    --VC-FG-0: rgba(255, 255, 255, 0.8);
+    --VC-FG-HALF: rgba(255, 255, 255, 0.6);
+    --VC-FG-1: rgba(255, 255, 255, 0.5);
+    --VC-FG-2: rgba(255, 255, 255, 0.3);
+    --VC-FG-3: rgba(255, 255, 255, 0.05);
+    --VC-RED: #fa5151;
+    --VC-ORANGE: #c87d2f;
+    --VC-YELLOW: #cc9c00;
+    --VC-GREEN: #74a800;
+    --VC-LIGHTGREEN: #28b561;
+    --VC-BRAND: #07c160;
+    --VC-BLUE: #10aeff;
+    --VC-INDIGO: #1196ff;
+    --VC-PURPLE: #8183ff;
+    --VC-LINK: #7d90a9;
+    --VC-TEXTGREEN: #259c5c;
+    --VC-FG: white;
+    --VC-BG: black;
+    --VC-BG-COLOR-ACTIVE: #282828;
+    --VC-WARN-BG: #332700;
+    --VC-WARN-BORDER: #664e00;
+    --VC-ERROR-BG: #321010;
+    --VC-ERROR-BORDER: #642020;
+    --VC-DOM-TAG-NAME-COLOR: #5DB0D7;
+    --VC-DOM-ATTRIBUTE-NAME-COLOR: #9BBBDC;
+    --VC-DOM-ATTRIBUTE-VALUE-COLOR: #f29766;
+    --VC-CODE-KEY-FG: #e36eec;
+    --VC-CODE-PRIVATE-KEY-FG: #f4c5f7;
+    --VC-CODE-FUNC-FG: #556af2;
+    --VC-CODE-NUMBER-FG: #9980ff;
+    --VC-CODE-STR-FG: #e93f3b;
+    --VC-CODE-NULL-FG: #808080;
+  }
+}
+#__vconsole[data-theme="dark"] {
+  --VC-BG-0: #191919;
+  --VC-BG-1: #1f1f1f;
+  --VC-BG-2: #232323;
+  --VC-BG-3: #2f2f2f;
+  --VC-BG-4: #606060;
+  --VC-BG-5: #2c2c2c;
+  --VC-BG-6: rgba(255, 255, 255, 0.2);
+  --VC-FG-0: rgba(255, 255, 255, 0.8);
+  --VC-FG-HALF: rgba(255, 255, 255, 0.6);
+  --VC-FG-1: rgba(255, 255, 255, 0.5);
+  --VC-FG-2: rgba(255, 255, 255, 0.3);
+  --VC-FG-3: rgba(255, 255, 255, 0.05);
+  --VC-RED: #fa5151;
+  --VC-ORANGE: #c87d2f;
+  --VC-YELLOW: #cc9c00;
+  --VC-GREEN: #74a800;
+  --VC-LIGHTGREEN: #28b561;
+  --VC-BRAND: #07c160;
+  --VC-BLUE: #10aeff;
+  --VC-INDIGO: #1196ff;
+  --VC-PURPLE: #8183ff;
+  --VC-LINK: #7d90a9;
+  --VC-TEXTGREEN: #259c5c;
+  --VC-FG: white;
+  --VC-BG: black;
+  --VC-BG-COLOR-ACTIVE: #282828;
+  --VC-WARN-BG: #332700;
+  --VC-WARN-BORDER: #664e00;
+  --VC-ERROR-BG: #321010;
+  --VC-ERROR-BORDER: #642020;
+  --VC-DOM-TAG-NAME-COLOR: #5DB0D7;
+  --VC-DOM-ATTRIBUTE-NAME-COLOR: #9BBBDC;
+  --VC-DOM-ATTRIBUTE-VALUE-COLOR: #f29766;
+  --VC-CODE-KEY-FG: #e36eec;
+  --VC-CODE-PRIVATE-KEY-FG: #f4c5f7;
+  --VC-CODE-FUNC-FG: #556af2;
+  --VC-CODE-NUMBER-FG: #9980ff;
+  --VC-CODE-STR-FG: #e93f3b;
+  --VC-CODE-NULL-FG: #808080;
+}
+/* color */
+.vcelm-node {
+  color: var(--VC-DOM-TAG-NAME-COLOR);
+}
+.vcelm-k {
+  color: var(--VC-DOM-ATTRIBUTE-NAME-COLOR);
+}
+.vcelm-v {
+  color: var(--VC-DOM-ATTRIBUTE-VALUE-COLOR);
+}
+/* layout */
+.vcelm-l {
+  padding-left: 8px;
+  position: relative;
+  word-wrap: break-word;
+  line-height: 1;
+}
+/*.vcelm-l.vcelm-noc {
+  padding-left: 0;
+}*/
+.vcelm-l.vc-toggle > .vcelm-node {
+  display: block;
+}
+.vcelm-l .vcelm-node:active {
+  background-color: var(--VC-BG-COLOR-ACTIVE);
+}
+.vcelm-l.vcelm-noc .vcelm-node:active {
+  background-color: transparent;
+}
+.vcelm-t {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+/* level */
+.vcelm-l .vcelm-l {
+  display: none;
+}
+.vcelm-l.vc-toggle > .vcelm-l {
+  margin-left: 4px;
+  display: block;
+}
+/* arrow */
+.vcelm-l:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 6px;
+  left: 3px;
+  width: 0;
+  height: 0;
+  border: transparent solid 3px;
+  border-left-color: var(--VC-FG-1);
+}
+.vcelm-l.vc-toggle:before {
+  display: block;
+  top: 6px;
+  left: 0;
+  border-top-color: var(--VC-FG-1);
+  border-left-color: transparent;
+}
+.vcelm-l.vcelm-noc:before {
+  display: none;
+}
+</style></head>
 
 <body>
   <button id="multi-play" type="button" class="btn btn-raised btn-primary rtc-primary-bg">连续播放音频（原生）</button>
@@ -834,32 +1633,33 @@
       './music/trtc-test-3.mp3',
       './music/trtc-test-4.mp3'
     ];
-
-    
-
-    await playAudioAsync();
+      audioElements[0] = new Audio(audioUrls[0]);
+      addLogForAudio(audioElements[0]);
+      await preloadingAudio(audioElements[0]);
+      await playAudioAsync(audioElements[0]);
 
     async function preloadingAudio(audioElement) {
       return new Promise(resolve => audioElement.oncanplay = resolve);
     }
 
-    async function playAudioAsync() {
-        audioElements[0] = new Audio(audioUrls[0]);
-        addLogForAudio(audioElements[0]);
-        await preloadingAudio(audioElements[0]);
-        audioElement[0].onended  = function() {
-            audioElements[1] = new Audio(audioUrls[1]);
-            addLogForAudio(audioElements[1]);
-            await preloadingAudio(audioElements[1]);
-            await audioElement[1].play();
-          };
-        audioElement[1].onended  = function() {
-            audioElements[2] = new Audio(audioUrls[2]);
-            addLogForAudio(audioElements[2]);
-            await preloadingAudio(audioElements[2]);
-            await audioElement[2].play();
-          };
-        await audioElement[0].play();
+    async function playAudioAsync(audioElement) {
+        return new Promise((resolve, reject) => {
+        const playPromise = audioElement.play();
+        audioElement.onended = resolve;
+
+        playPromise
+          .then(() => console.log(`音频 ${audioElement.src} 开始播放`))
+          .catch(error => {
+            console.error(`音频播放被阻止`, error.name, error.message);
+            if (error.name === 'NotAllowedError') {
+              console.warn('提示：这可能是由于移动端浏览器的自动播放限制导致，需要用户手动触发播放');
+            } else if (error.name === 'AbortError') {
+              console.warn('提示：播放被中断，可能是由于页面切换或资源加载问题');
+            }
+            reject(error);
+          })
+          .finally(() => console.log(`音频 ${audioElement.src} 播放 finally`));
+      });
     }
 
     function addLogForAudio(audioElement) {
@@ -880,9 +1680,9 @@
   </div>
   <div class="vc-panel">
     <div class="vc-tabbar">
-    <a class="vc-tab vc-actived" data-tab="default" id="__vc_tab_default">Log</a><a class="vc-tab" data-tab="system" id="__vc_tab_system">System</a><a class="vc-tab" data-tab="network" id="__vc_tab_network">Network</a><a class="vc-tab" data-tab="element" id="__vc_tab_element">Element</a><a class="vc-tab" data-tab="storage" id="__vc_tab_storage">Storage</a></div>
+    <a class="vc-tab vc-actived" data-tab="default" id="__vc_tab_default">Log</a><a class="vc-tab" data-tab="system" id="__vc_tab_system">System</a><a class="vc-tab" data-tab="network" id="__vc_tab_network">Network</a><a class="vc-tab" data-tab="element" id="__vc_tab_element">Element</a><a class="vc-tab" data-tab="storage" id="__vc_tab_storage">Storage</a><a class="vc-tab" data-tab="default" id="__vc_tab_default">Log</a><a class="vc-tab" data-tab="system" id="__vc_tab_system">System</a><a class="vc-tab" data-tab="network" id="__vc_tab_network">Network</a><a class="vc-tab" data-tab="element" id="__vc_tab_element">Element</a><a class="vc-tab" data-tab="storage" id="__vc_tab_storage">Storage</a></div>
     <div class="vc-topbar">
-    <a class="vc-toptab vc-topbar-default vc-actived vc-toggle" data-type="all">All</a><a class="vc-toptab vc-topbar-default vc-toggle" data-type="log">Log</a><a class="vc-toptab vc-topbar-default vc-toggle" data-type="info">Info</a><a class="vc-toptab vc-topbar-default vc-toggle" data-type="warn">Warn</a><a class="vc-toptab vc-topbar-default vc-toggle" data-type="error">Error</a><a class="vc-toptab vc-topbar-system vc-actived" data-type="all">All</a><a class="vc-toptab vc-topbar-system" data-type="log">Log</a><a class="vc-toptab vc-topbar-system" data-type="info">Info</a><a class="vc-toptab vc-topbar-system" data-type="warn">Warn</a><a class="vc-toptab vc-topbar-system" data-type="error">Error</a></div>
+    <a class="vc-toptab vc-topbar-default vc-actived vc-toggle" data-type="all">All</a><a class="vc-toptab vc-topbar-default vc-toggle" data-type="log">Log</a><a class="vc-toptab vc-topbar-default vc-toggle" data-type="info">Info</a><a class="vc-toptab vc-topbar-default vc-toggle" data-type="warn">Warn</a><a class="vc-toptab vc-topbar-default vc-toggle" data-type="error">Error</a><a class="vc-toptab vc-topbar-system vc-actived" data-type="all">All</a><a class="vc-toptab vc-topbar-system" data-type="log">Log</a><a class="vc-toptab vc-topbar-system" data-type="info">Info</a><a class="vc-toptab vc-topbar-system" data-type="warn">Warn</a><a class="vc-toptab vc-topbar-system" data-type="error">Error</a><a class="vc-toptab vc-topbar-default vc-actived vc-toggle" data-type="all">All</a><a class="vc-toptab vc-topbar-default vc-toggle" data-type="log">Log</a><a class="vc-toptab vc-topbar-default vc-toggle" data-type="info">Info</a><a class="vc-toptab vc-topbar-default vc-toggle" data-type="warn">Warn</a><a class="vc-toptab vc-topbar-default vc-toggle" data-type="error">Error</a><a class="vc-toptab vc-topbar-system vc-actived" data-type="all">All</a><a class="vc-toptab vc-topbar-system" data-type="log">Log</a><a class="vc-toptab vc-topbar-system" data-type="info">Info</a><a class="vc-toptab vc-topbar-system" data-type="warn">Warn</a><a class="vc-toptab vc-topbar-system" data-type="error">Error</a></div>
     <div class="vc-content vc-has-topbar">
     <div class="vc-logbox vc-actived" id="__vc_log_default">  <div>  <div class="vc-log"><div id="__vc_qirg4e" class="vc-item vc-item-id vc-item-error">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> Uncaught&nbsp;(in&nbsp;promise)&nbsp;</i><div class="vc-fold">      <i class="vc-fold-outer">Object&nbsp;{message:&nbsp;audioElement&nbsp;is&nbsp;not&nbsp;define...</i>    <div class="vc-fold-inner"></div>  </div></div></div><div id="__vc_8zlxwp" class="vc-item vc-item-id vc-item-error">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> Uncaught&nbsp;(in&nbsp;promise)&nbsp;</i><div class="vc-fold">      <i class="vc-fold-outer">Object&nbsp;{message:&nbsp;audioElement&nbsp;is&nbsp;not&nbsp;define...</i>    <div class="vc-fold-inner"></div>  </div></div></div><div id="__vc_jbtybp" class="vc-item vc-item-id vc-item-error">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> Uncaught&nbsp;(in&nbsp;promise)&nbsp;</i><div class="vc-fold">      <i class="vc-fold-outer">Object&nbsp;{message:&nbsp;audioElement&nbsp;is&nbsp;not&nbsp;define...</i>    <div class="vc-fold-inner"></div>  </div></div></div><div id="__vc_0zshge" class="vc-item vc-item-id vc-item-error">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> Uncaught&nbsp;(in&nbsp;promise)&nbsp;</i><div class="vc-fold">      <i class="vc-fold-outer">Object&nbsp;{message:&nbsp;audioElement&nbsp;is&nbsp;not&nbsp;define...</i>    <div class="vc-fold-inner"></div>  </div></div></div><div id="__vc_8lziuu" class="vc-item vc-item-id vc-item-error">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> Uncaught&nbsp;(in&nbsp;promise)&nbsp;</i><div class="vc-fold">      <i class="vc-fold-outer">Object&nbsp;{message:&nbsp;audioElement&nbsp;is&nbsp;not&nbsp;define...</i>    <div class="vc-fold-inner"></div>  </div></div></div><div id="__vc_oknuup" class="vc-item vc-item-id vc-item-error">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> Uncaught&nbsp;(in&nbsp;promise)&nbsp;</i><div class="vc-fold">      <i class="vc-fold-outer">Object&nbsp;{message:&nbsp;audioElement&nbsp;is&nbsp;not&nbsp;define...</i>    <div class="vc-fold-inner"></div>  </div></div></div><div id="__vc_kz8ay3" class="vc-item vc-item-id vc-item-error">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> Uncaught&nbsp;(in&nbsp;promise)&nbsp;</i><div class="vc-fold">      <i class="vc-fold-outer">Object&nbsp;{message:&nbsp;audioElement&nbsp;is&nbsp;not&nbsp;define...</i>    <div class="vc-fold-inner"></div>  </div></div></div><div id="__vc_a65ci0" class="vc-item vc-item-id vc-item-error">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> Uncaught&nbsp;(in&nbsp;promise)&nbsp;</i><div class="vc-fold">      <i class="vc-fold-outer">Object&nbsp;{message:&nbsp;audioElement&nbsp;is&nbsp;not&nbsp;define...</i>    <div class="vc-fold-inner"></div>  </div></div></div><div id="__vc_8yxyfk" class="vc-item vc-item-id vc-item-error">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> Uncaught&nbsp;(in&nbsp;promise)&nbsp;</i><div class="vc-fold">      <i class="vc-fold-outer">Object&nbsp;{message:&nbsp;audioElement&nbsp;is&nbsp;not&nbsp;define...</i>    <div class="vc-fold-inner"></div>  </div></div></div><div id="__vc_29j6uy" class="vc-item vc-item-id vc-item-error">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> Uncaught&nbsp;(in&nbsp;promise)&nbsp;</i><div class="vc-fold">      <i class="vc-fold-outer">Object&nbsp;{message:&nbsp;audioElement&nbsp;is&nbsp;not&nbsp;define...</i>    <div class="vc-fold-inner"></div>  </div></div></div><div id="__vc_1xy89x" class="vc-item vc-item-id vc-item-error">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> Uncaught&nbsp;(in&nbsp;promise)&nbsp;</i><div class="vc-fold">      <i class="vc-fold-outer">Object&nbsp;{message:&nbsp;audioElement&nbsp;is&nbsp;not&nbsp;define...</i>    <div class="vc-fold-inner"></div>  </div></div></div><div id="__vc_m2ad4t" class="vc-item vc-item-id vc-item-error">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> Uncaught&nbsp;(in&nbsp;promise)&nbsp;</i><div class="vc-fold">      <i class="vc-fold-outer">Object&nbsp;{message:&nbsp;audioElement&nbsp;is&nbsp;not&nbsp;define...</i>    <div class="vc-fold-inner"></div>  </div></div></div><div id="__vc_g0l4se" class="vc-item vc-item-id vc-item-error">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> Uncaught&nbsp;TypeError:&nbsp;Cannot&nbsp;read&nbsp;properties&nbsp;of&nbsp;undefined&nbsp;(reading&nbsp;'play')
 /TRTC.html:28:22</i><i> TypeError:&nbsp;Cannot&nbsp;read&nbsp;properties&nbsp;of&nbsp;undefined&nbsp;(reading&nbsp;'play')
@@ -890,9 +1690,15 @@
           <div class="item item-value svelte-dhd3ex">Value</div> 
           <div class="action svelte-dhd3ex"></div></div> <div class="row row-empty svelte-dhd3ex"><div class="item svelte-dhd3ex">Empty</div></div> <div class="row svelte-dhd3ex"><button class="item btn svelte-1nkk86e"><svg id="" class="" style="height:1em;vertical-align:-.125em;overflow:visible;" viewBox="0 0 448 512" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg"><g transform="translate(256 256)"><g transform=""><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" fill="currentColor" transform="translate(-256 -256)"></path></g></g></svg>
             Add Item</button> <button class="item btn svelte-1nkk86e"><svg id="" class="" style="height:1em;vertical-align:-.125em;overflow:visible;" viewBox="0 0 512 512" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg"><g transform="translate(256 256)"><g transform=""><path d="M440.65 12.57l4 82.77A247.16 247.16 0 0 0 255.83 8C134.73 8 33.91 94.92 12.29 209.82A12 12 0 0 0 24.09 224h49.05a12 12 0 0 0 11.67-9.26 175.91 175.91 0 0 1 317-56.94l-101.46-4.86a12 12 0 0 0-12.57 12v47.41a12 12 0 0 0 12 12H500a12 12 0 0 0 12-12V12a12 12 0 0 0-12-12h-47.37a12 12 0 0 0-11.98 12.57zM255.83 432a175.61 175.61 0 0 1-146-77.8l101.8 4.87a12 12 0 0 0 12.57-12v-47.4a12 12 0 0 0-12-12H12a12 12 0 0 0-12 12V500a12 12 0 0 0 12 12h47.35a12 12 0 0 0 12-12.6l-4.15-82.57A247.17 247.17 0 0 0 255.83 504c121.11 0 221.93-86.92 243.55-201.82a12 12 0 0 0-11.8-14.18h-49.05a12 12 0 0 0-11.67 9.26A175.86 175.86 0 0 1 255.83 432z" fill="currentColor" transform="translate(-256 -256)"></path></g></g></svg>
+            Refresh</button></div></div> </div></div></div><div class="vc-logbox" id="__vc_log_default">  <div>  <div class="vc-log"><div id="__vc_0v6qkw" class="vc-item vc-item-id vc-item-error">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> Uncaught&nbsp;SyntaxError:&nbsp;await&nbsp;is&nbsp;only&nbsp;valid&nbsp;in&nbsp;async&nbsp;functions&nbsp;and&nbsp;the&nbsp;top&nbsp;level&nbsp;bodies&nbsp;of&nbsp;modules
+/TRTC.html:853:13</i><i> SyntaxError:&nbsp;await&nbsp;is&nbsp;only&nbsp;valid&nbsp;in&nbsp;async&nbsp;functions&nbsp;and&nbsp;the&nbsp;top&nbsp;level&nbsp;bodies&nbsp;of&nbsp;modules</i></div></div></div>  <form class="vc-cmd">    <button class="vc-cmd-btn" type="submit">OK</button>    <ul class="vc-cmd-prompted"></ul>    <div class="vc-cmd-input-wrap">      <textarea class="vc-cmd-input" placeholder="command..."></textarea>    </div>  </form>  <form class="vc-cmd vc-filter">    <button class="vc-cmd-btn" type="submit">Filter</button>    <ul class="vc-cmd-prompted"></ul>    <div class="vc-cmd-input-wrap">      <textarea class="vc-cmd-input" placeholder="filter..."></textarea>    </div>  </form></div></div><div class="vc-logbox" id="__vc_log_system">  <div>  <div class="vc-log"><div id="__vc_un2z58" class="vc-item vc-item-id vc-item-info ">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> Location:</i><i> https://myandymy.github.io/TRTC.html</i></div></div><div id="__vc_gwvcqg" class="vc-item vc-item-id vc-item-info ">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> Client:</i><i> Mac,&nbsp;MacOS&nbsp;10.15.7</i></div></div><div id="__vc_hkonzi" class="vc-item vc-item-id vc-item-info ">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> UA:</i><i> Mozilla/5.0&nbsp;(Macintosh;&nbsp;Intel&nbsp;Mac&nbsp;OS&nbsp;X&nbsp;10_15_7)&nbsp;AppleWebKit/537.36&nbsp;(KHTML,&nbsp;like&nbsp;Gecko)&nbsp;Chrome/132.0.0.0&nbsp;Safari/537.36</i></div></div><div id="__vc_mboa9v" class="vc-item vc-item-id vc-item-info ">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> navigationStart:</i><i> 1740539701098</i></div></div><div id="__vc_rrxa8y" class="vc-item vc-item-id vc-item-info ">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> navigation:</i><i> 1ms</i></div></div><div id="__vc_f23rg3" class="vc-item vc-item-id vc-item-info ">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> dns:</i><i> 0ms</i></div></div><div id="__vc_h4bn9k" class="vc-item vc-item-id vc-item-info ">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> tcp:</i><i> 0ms</i></div></div><div id="__vc_5euxvf" class="vc-item vc-item-id vc-item-info ">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> request:</i><i> 195ms</i></div></div><div id="__vc_ixbqa6" class="vc-item vc-item-id vc-item-info ">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> response:</i><i> 1ms</i></div></div><div id="__vc_hih9k8" class="vc-item vc-item-id vc-item-info ">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> domComplete&nbsp;(domLoaded):</i><i> 27ms&nbsp;(18ms)</i></div></div><div id="__vc_ip5ta0" class="vc-item vc-item-id vc-item-info ">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> loadEvent:</i><i> 0ms</i></div></div><div id="__vc_u0humk" class="vc-item vc-item-id vc-item-info ">  <i class="vc-item-copy"><svg class="vc-icon-clippy" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg><svg class="vc-icon-check" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></i>  <div class="vc-item-content"><i> total&nbsp;(DOM):</i><i> 228ms&nbsp;(228ms)</i></div></div></div></div></div><div class="vc-logbox" id="__vc_log_network">  <div class="vc-table">  <dl class="vc-table-row">  <dd class="vc-table-col vc-table-col-4">Name </dd>  <dd class="vc-table-col">Method</dd>  <dd class="vc-table-col">Status</dd>  <dd class="vc-table-col">Time</dd></dl><div class="vc-log"></div></div></div><div class="vc-logbox" id="__vc_log_element">  <div>  <div class="vc-log"></div></div></div><div class="vc-logbox" id="__vc_log_storage">  <div><div class="tabs"><div class="tab-list svelte-dhd3ex"><div class="tab-list svelte-sp52j5"><button class="svelte-wph4en selected">cookies</button><button class="svelte-wph4en">localStorage</button><button class="svelte-wph4en">sessionStorage</button></div></div> <div class="table svelte-dhd3ex"><div class="row svelte-dhd3ex"><div class="item item-key svelte-dhd3ex">Key</div> 
+          <div class="item item-value svelte-dhd3ex">Value</div> 
+          <div class="action svelte-dhd3ex"></div></div> <div class="row row-empty svelte-dhd3ex"><div class="item svelte-dhd3ex">Empty</div></div> <div class="row svelte-dhd3ex"><button class="item btn svelte-1nkk86e"><svg id="" class="" style="height:1em;vertical-align:-.125em;overflow:visible;" viewBox="0 0 448 512" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg"><g transform="translate(256 256)"><g transform=""><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" fill="currentColor" transform="translate(-256 -256)"></path></g></g></svg>
+            Add Item</button> <button class="item btn svelte-1nkk86e"><svg id="" class="" style="height:1em;vertical-align:-.125em;overflow:visible;" viewBox="0 0 512 512" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg"><g transform="translate(256 256)"><g transform=""><path d="M440.65 12.57l4 82.77A247.16 247.16 0 0 0 255.83 8C134.73 8 33.91 94.92 12.29 209.82A12 12 0 0 0 24.09 224h49.05a12 12 0 0 0 11.67-9.26 175.91 175.91 0 0 1 317-56.94l-101.46-4.86a12 12 0 0 0-12.57 12v47.41a12 12 0 0 0 12 12H500a12 12 0 0 0 12-12V12a12 12 0 0 0-12-12h-47.37a12 12 0 0 0-11.98 12.57zM255.83 432a175.61 175.61 0 0 1-146-77.8l101.8 4.87a12 12 0 0 0 12.57-12v-47.4a12 12 0 0 0-12-12H12a12 12 0 0 0-12 12V500a12 12 0 0 0 12 12h47.35a12 12 0 0 0 12-12.6l-4.15-82.57A247.17 247.17 0 0 0 255.83 504c121.11 0 221.93-86.92 243.55-201.82a12 12 0 0 0-11.8-14.18h-49.05a12 12 0 0 0-11.67 9.26A175.86 175.86 0 0 1 255.83 432z" fill="currentColor" transform="translate(-256 -256)"></path></g></g></svg>
             Refresh</button></div></div> </div></div></div></div>
     <div class="vc-toolbar">
-      <a class="vc-tool vc-tool-default vc-toggle">Clear</a><a class="vc-tool vc-tool-system">Clear</a><a class="vc-tool vc-tool-network">Clear</a><a class="vc-tool vc-tool-element">Expand</a><a class="vc-tool vc-tool-element">Collapse</a><a class="vc-tool vc-global-tool vc-tool-last vc-hide">Hide</a>
+      <a class="vc-tool vc-tool-default vc-toggle">Clear</a><a class="vc-tool vc-tool-system">Clear</a><a class="vc-tool vc-tool-network">Clear</a><a class="vc-tool vc-tool-element">Expand</a><a class="vc-tool vc-tool-element">Collapse</a><a class="vc-tool vc-tool-default vc-toggle">Clear</a><a class="vc-tool vc-tool-system">Clear</a><a class="vc-tool vc-tool-network">Clear</a><a class="vc-tool vc-tool-element">Expand</a><a class="vc-tool vc-tool-element">Collapse</a><a class="vc-tool vc-global-tool vc-tool-last vc-hide">Hide</a>
     </div>
   </div>
-</div></body></html>
+</div>
+</body></html>
