@@ -845,14 +845,17 @@
 
     async function playAudioAsync() {
         audioElements[0] = new Audio(audioUrls[0]);
+        addLogForAudio(audioElements[0]);
         await preloadingAudio(audioElements[0]);
         audioElement[0].onended  = function() {
             audioElements[1] = new Audio(audioUrls[1]);
+            addLogForAudio(audioElements[1]);
             await preloadingAudio(audioElements[1]);
             await audioElement[1].play();
           };
         audioElement[1].onended  = function() {
             audioElements[2] = new Audio(audioUrls[2]);
+            addLogForAudio(audioElements[2]);
             await preloadingAudio(audioElements[2]);
             await audioElement[2].play();
           };
