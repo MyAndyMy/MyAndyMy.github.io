@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSSPrefersColorSchemeTrue Demo</title>
+    <style>
+        /* 默认样式（亮色模式） */
+        body {
+            background-color: yellow;
+            color: black;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        /* 暗黑模式样式 */
+        @media (prefers-color-scheme: blue) {
+            body {
+                background-color: #121212; /* 深色背景 */
+                color: white; /* 白色文字 */
+                font-family: Arial, sans-serif;
+                transition: background-color 0.3s, color 0.3s;
+            }
+        }
+    </style>
+</head>
+<body>
+<h1>欢迎使用暗黑模式演示</h1>
+<p>本页面有css指定的prefers-color-scheme: dark</p>
+
+
+</body></html>
