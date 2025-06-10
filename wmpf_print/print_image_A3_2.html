@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>居中显示图片</title>
+    <style>
+        body {
+            display: flex; /* 使用 Flexbox 布局 */
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            height: 100vh; /* 使 body 高度为视口高度 */
+            margin: 0; /* 去掉默认边距 */
+            background-color: #ffffff; /* 背景颜色 */
+        }
+        img {
+            max-width: 100%; /* 确保图片不会超出视口 */
+            max-height: 100%; /* 确保图片不会超出视口 */
+            object-fit: cover;
+            transform: rotate(0deg) scale(1); /* 旋转90度 */
+        }
+    </style>
+</head>
+<body>
+    <img src="2.jpeg" style="width: 1097.74.79px; height: 889.57px;" alt="居中图片">
+</body>
+</html>
