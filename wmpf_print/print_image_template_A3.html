@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-wrap: wrap; /* 允许换行 */
+            justify-content: flex-start;
+            height: 100vh; /* 使页面高度为视口高度 */
+            margin: 0; /* 去掉默认边距 */
+            background-color: #cf1111; /* 背景颜色 */
+            padding: 0px; /* 页面内边距 */
+        }
+        
+        iframe {
+            border: none; /* 去掉边框 */
+            margin: 0;
+            padding: 0;
+            border: none;
+            width: 297mm; /* A4 宽度*/
+            height: 420mm; /* A4 高度*/
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* 垂直居中 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <iframe scrolling="no" align="top" src="print_image_A3_1.html"></iframe>
+        <iframe scrolling="no" align="top" src="print_image_A3_2.html"></iframe>
+    </div>
+</body>
+</html>
