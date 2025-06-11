@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,20 +9,28 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            flex-wrap: wrap; /* 允许换行 */
+            flex-wrap: wrap;
+            /* 允许换行 */
             justify-content: flex-start;
-            height: 100vh; /* 使页面高度为视口高度 */
-            margin: 0; /* 去掉默认边距 */
-            background-color: #ffffff; /* 背景颜色 */
-            padding: 0px; /* 页面内边距 */
+            height: 100vh;
+            /* 使页面高度为视口高度 */
+            margin: 0;
+            /* 去掉默认边距 */
+            background-color: #ffffff;
+            /* 背景颜色 */
+            padding: 0px;
+            /* 页面内边距 */
         }
-        
+
         iframe {
-            border: none; /* 去掉边框 */
-            margin: 10px; /* 添加一些间距 */
+            border: none;
+            /* 去掉边框 */
+            margin: 10px;
+            /* 添加一些间距 */
         }
     </style>
 </head>
+
 <body>
     <div class="container" id="iframeContainer"></div>
 
@@ -38,20 +47,41 @@
         // 获取 img 参数并拆分成数组
         const imgList = params.get('img') ? params.get('img').split(',') : [];
         const paperSize = params.get('paper_size');
+        console.log('纸张大小:', paperSize);
+        const landscape = params.get('landscape') === 'true'; // 获取 auto_rotate 参数并转换为布尔值
+        console.log('是否为横屏:', landscape);
         const autoRotate = params.get('auto_rotate') === 'true'; // 获取 auto_rotate 参数并转换为布尔值
+        console.log('是否自动旋转:', autoRotate);
+        const autoFill = params.get('auto_fill') === 'true'; // 获取 auto_rotate 参数并转换为布尔值
+        console.log('是否填充纸张:', autoFill);
 
         // 根据 paper_size 设置宽度和高度
         let width, height;
         if (paperSize === 'A4') {
-            width = '210mm';
-            height = '297mm';
+            if (landscape === true) {
+                width = '297mm';
+                height = '200mm'; // 这里从210mm调到了200mm
+            } else {
+                width = '210mm';
+                height = '297mm';
+            }
         } else if (paperSize === 'A3') {
-            width = '297mm';
-            height = '420mm';
+            if (landscape === true) {
+                width = '420mm';
+                height = '287mm'; // 这里从297mm调到了287mm
+            } else {
+                width = '297mm';
+                height = '420mm';
+            }
         } else {
             // 默认值（可以根据需要添加其他纸张大小的条件）
-            width = '210mm'; // 默认值
-            height = '297mm'; // 默认值
+            if (landscape === true) {
+                width = '297mm'; // 默认值
+                height = '200mm'; // 这里从210mm调到了200mm
+            } else {
+                width = '210mm'; // 默认值
+                height = '297mm'; // 默认值
+            }
         }
 
         // 获取容器
@@ -66,7 +96,6 @@
 
             // 创建一个 HTML 内容
             const htmlContent = `
-                <!DOCTYPE html>
                 <html lang="zh">
                 <head>
                     <meta charset="UTF-8">
@@ -79,9 +108,10 @@
                             height: 100vh; /* 使 body 高度为视口高度 */
                             margin: 0; /* 去掉默认边距 */
                             background-color: #ffffff; /* 背景颜色 */
+                            overflow: hidden;
                         }
                         img {
-                            object-fit: contain;
+                            object-fit: ${autoFill ? 'cover' : 'contain'}; /* 根据 auto_fill 设置填充方式 */
                             width: 100%; /* 图片宽度为 100% */
                             height: 100%; /* 图片高度为 100% */
                         }
@@ -92,27 +122,52 @@
                     <script>
                         const img = document.getElementById('dynamicImage');
                         const autoRotate = ${autoRotate}; // 从外部传入的 auto_rotate 值
+                        const landscape = ${landscape}; // 从外部传入的 auto_rotate 值
 
                         // 判断图片的宽高比
                         img.onload = function() {
                             const aspectRatio = img.naturalWidth / img.naturalHeight;
-                            if (autoRotate && aspectRatio > 1) { // 如果是横屏
-                                img.style.objectFit = 'contain'; // 重新设置 object-fit
+                            console.log('图片${imgSrc}的宽度:', img.naturalWidth, '高度:', img.naturalHeight, '是否需要自动旋转:', autoRotate);
+                            if (aspectRatio < 1) { // 竖屏图片
+                              if (landscape === false) { // 纸张为垂直方向
+                                // 什么都不做
+                              } else if (landscape === true) {// 纸张为水平方向
+                                  if (autoRotate) { // 如果开了自动旋转
+                                    img.style.transform = 'rotate(90deg)'; // 旋转图片
+                                  } else { // 如果没开自动旋转
+                                    // 什么都不做
+                                  }
+                              }
+                            } else if (aspectRatio > 1) { // 横屏图片
+                              if (landscape === true) { // 纸张为水平方向
+                                // 什么都不做
+                              } else if (landscape === false) {// 纸张为垂直方向
+                               if (autoRotate) { // 如果开了自动旋转
+                               img.style.transform = 'rotate(90deg)'; // 旋转图片
+                               } else { // 如果没开自动旋转
+                                // 什么都不做
+                                }
+                              }
+                            }
+
+                            if (autoRotate && aspectRatio > 1 && landscape === false) { // 如果是横屏
+                                img.style.transform = 'rotate(90deg)'; // 旋转图片
+                            } else if (autoRotate && aspectRatio < 1 && landscape === true) { // 如果是竖屏
                                 img.style.transform = 'rotate(90deg)'; // 旋转图片
                             }
                         };
-                    </script>
+                    <\/script>
                 </body>
                 </html>
             `;
 
-            // 创建一个 Blob URL
-            const blob = new Blob([htmlContent], { type: 'text/html' });
-            iframe.src = URL.createObjectURL(blob);
+            // 使用 srcdoc 属性直接设置 HTML 内容
+            iframe.srcdoc = htmlContent;
 
             // 将 iframe 添加到容器中
             container.appendChild(iframe);
         });
     </script>
 </body>
+
 </html>
