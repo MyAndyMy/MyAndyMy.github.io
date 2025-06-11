@@ -13,12 +13,14 @@
             background-color: #ffffff; /* 背景颜色 */
         }
         img {
-            object-fit: cover;
-            transform: rotate(0deg) scale(0.72);
+            object-fit: contain;
+            width: 100%; /* 图片宽度为 100% */
+            height: 100%; /* 图片高度为 100% */
+            transform: rotate(0deg) scale(1); /* 当你要缩放的时候，就不能给width和height设置为100%了 */
         }
     </style>
 </head>
 <body>
-    <img src="1.jpeg" style="width: 1080px; height: 615px;">
+    <img src="1.jpeg">
 </body>
 </html>
