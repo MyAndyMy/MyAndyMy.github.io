@@ -32,8 +32,31 @@
 </head>
 <body>
     <div class="container">
-        <iframe scrolling="no" align="top" src="print_image_A4_1.html"></iframe>
-        <iframe scrolling="no" align="top" src="print_image_A4_2.html"></iframe>
+        <iframe id="iframe1" scrolling="no" align="top"></iframe>
+        <iframe id="iframe2" scrolling="no" align="top"></iframe>
     </div>
+
+    <script>
+        // 获取当前页面的 URL
+        const currentUrl = window.location.href;
+
+        // 使用 URL 对象解析 URL
+        const url = new URL(currentUrl);
+
+        // 使用 URLSearchParams 获取查询参数
+        const params = new URLSearchParams(url.search);
+
+        // 获取 src1 和 src2 的值
+        const src1 = params.get('src1');
+        const src2 = params.get('src2');
+
+        // 设置 iframe 的 src 属性
+        document.getElementById('iframe1').src = src1;
+        document.getElementById('iframe2').src = src2;
+
+        // 输出 src1 和 src2 以供调试
+        console.log('src1:', src1);
+        console.log('src2:', src2);
+    </script>
 </body>
 </html>
