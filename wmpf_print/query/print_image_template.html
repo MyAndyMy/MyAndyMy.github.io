@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-wrap: wrap; /* 允许换行 */
+            justify-content: flex-start;
+            height: 100vh; /* 使页面高度为视口高度 */
+            margin: 0; /* 去掉默认边距 */
+            background-color: #ffffff; /* 背景颜色 */
+            padding: 0px; /* 页面内边距 */
+        }
+        
+        iframe {
+            border: none; /* 去掉边框 */
+            margin: 10px; /* 添加一些间距 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="iframeContainer"></div>
+
+    <script>
+        // 获取当前页面的 URL
+        const currentUrl = window.location.href;
+
+        // 使用 URL 对象解析 URL
+        const url = new URL(currentUrl);
+
+        // 使用 URLSearchParams 获取查询参数
+        const params = new URLSearchParams(url.search);
+
+        // 获取 img 参数并拆分成数组
+        const imgList = params.get('img') ? params.get('img').split(',') : [];
+        const paperSize = params.get('paper_size');
+        const autoRotate = params.get('auto_rotate') === 'true'; // 获取 auto_rotate 参数并转换为布尔值
+
+        // 根据 paper_size 设置宽度和高度
+        let width, height;
+        if (paperSize === 'A4') {
+            width = '210mm';
+            height = '297mm';
+        } else if (paperSize === 'A3') {
+            width = '297mm';
+            height = '420mm';
+        } else {
+            // 默认值（可以根据需要添加其他纸张大小的条件）
+            width = '210mm'; // 默认值
+            height = '297mm'; // 默认值
+        }
+
+        // 获取容器
+        const container = document.getElementById('iframeContainer');
+
+        // 根据 img_list 动态生成 iframe
+        imgList.forEach((imgSrc) => {
+            const iframe = document.createElement('iframe');
+            // 设置 iframe 的宽度和高度
+            iframe.style.width = width;
+            iframe.style.height = height;
+
+            // 创建一个 HTML 内容
+            const htmlContent = `
+                <!DOCTYPE html>
+                <html lang="zh">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <style>
+                        body {
+                            display: flex; /* 使用 Flexbox 布局 */
+                            justify-content: center; /* 水平居中 */
+                            align-items: center; /* 垂直居中 */
+                            height: 100vh; /* 使 body 高度为视口高度 */
+                            margin: 0; /* 去掉默认边距 */
+                            background-color: #ffffff; /* 背景颜色 */
+                        }
+                        img {
+                            object-fit: contain;
+                            width: 100%; /* 图片宽度为 100% */
+                            height: 100%; /* 图片高度为 100% */
+                        }
+                    </style>
+                </head>
+                <body>
+                    <img src="${imgSrc}" id="dynamicImage">
+                    <script>
+                        const img = document.getElementById('dynamicImage');
+                        const autoRotate = ${autoRotate}; // 从外部传入的 auto_rotate 值
+
+                        // 判断图片的宽高比
+                        img.onload = function() {
+                            const aspectRatio = img.naturalWidth / img.naturalHeight;
+                            if (autoRotate && aspectRatio > 1) { // 如果是横屏
+                                img.style.objectFit = 'contain'; // 重新设置 object-fit
+                                img.style.transform = 'rotate(90deg)'; // 旋转图片
+                            }
+                        };
+                    </script>
+                </body>
+                </html>
+            `;
+
+            // 创建一个 Blob URL
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            iframe.src = URL.createObjectURL(blob);
+
+            // 将 iframe 添加到容器中
+            container.appendChild(iframe);
+        });
+    </script>
