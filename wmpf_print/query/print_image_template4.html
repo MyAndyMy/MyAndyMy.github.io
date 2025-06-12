@@ -76,27 +76,27 @@
         let width, height;
         if (paperSize === 'A4') { // 297mm x 210mm
             if (landscape === true) {
-                width = '1090.67px';
-                height = '745.333px';
+                width = '1090.67px'; // 这里实际上没有使用A4的高度297mm，而是用了内核层的WebPrintParams的printable_area_in_css_pixels.height
+                height = '745.333px'; // 这里实际上没有使用A4的宽度210mm，而是用了内核层的WebPrintParams的printable_area_in_css_pixels.width
             } else {
-                width = '745.333px';
-                height = '1086.67px'; // 这里自己编译的chromium内核值为1122.67px, 但使用1122.67px时，mac上官网下载的chromium在打印时会多出一些, 所以调整为1086.67px
+                width = '745.333px'; // 这里实际上没有使用A4的宽度210mm，而是用了内核层的WebPrintParams的printable_area_in_css_pixels.width
+                height = '1086.67px'; // 这里实际上没有使用A4的高度297mm，而是用了内核层的WebPrintParams的printable_area_in_css_pixels.height
             }
         } else if (paperSize === 'A3') { // 420mm x 297mm
             if (landscape === true) {
-                width = '1556px';
-                height = '1064.67px'; // 这里自己编译的chromium内核值为1090.67px, 但使用1090.67px时，mac上官网下载的chromium在打印时会多出一些, 所以调整为1064.67px
+                width = '1556px'; // 同上
+                height = '1064.67px'; // 同上
             } else {
-                width = '1090.67px';
-                height = '1556px';
+                width = '1090.67px'; // 同上
+                height = '1556px'; // 同上
             }
         } else { // 其他尺寸待新增
-            if (landscape === true) {
-                width = '297mm'; // 默认值
-                height = '200mm'; // 默认值
+            if (landscape === true) { // 默认为A4
+                width = '1090.67px';
+                height = '745.333px';
             } else {
-                width = '210mm'; // 默认值
-                height = '297mm'; // 默认值
+                width = '745.333px'; // 默认值
+                height = '1086.67px'; // 默认值
             }
         }
 
