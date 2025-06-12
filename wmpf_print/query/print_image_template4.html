@@ -76,11 +76,11 @@
         let width, height;
         if (paperSize === 'A4') { // 297mm x 210mm
             if (landscape === true) {
-                width = '1090.67px'; // 这里实际上没有使用A4的高度297mm，而是用了内核层的WebPrintParams的printable_area_in_css_pixels.height
-                height = '745.333px'; // 这里实际上没有使用A4的宽度210mm，而是用了内核层的WebPrintParams的printable_area_in_css_pixels.width
+                width = '1090.67px'; // 这里实际上没有使用A4的高度297mm，而是用了内核层的WebPrintParams的printable_area_in_css_pixels.height，由于目前web ui未合入wmpf，所以内核层的参数无法直接作用到这里，所以先hardcode
+                height = '745.333px'; // 这里实际上没有使用A4的宽度210mm，而是用了内核层的WebPrintParams的printable_area_in_css_pixels.width，由于目前web ui未合入wmpf，所以内核层的参数无法直接作用到这里，所以先hardcode
             } else {
-                width = '745.333px'; // 这里实际上没有使用A4的宽度210mm，而是用了内核层的WebPrintParams的printable_area_in_css_pixels.width
-                height = '1086.67px'; // 这里实际上没有使用A4的高度297mm，而是用了内核层的WebPrintParams的printable_area_in_css_pixels.height
+                width = '745.333px'; // 这里实际上没有使用A4的宽度210mm，而是用了内核层的WebPrintParams的printable_area_in_css_pixels.width，由于目前web ui未合入wmpf，所以内核层的参数无法直接作用到这里，所以先hardcode
+                height = '1086.67px'; // 这里实际上没有使用A4的高度297mm，而是用了内核层的WebPrintParams的printable_area_in_css_pixels.height，由于目前web ui未合入wmpf，所以内核层的参数无法直接作用到这里，所以先hardcode
             }
         } else if (paperSize === 'A3') { // 420mm x 297mm
             if (landscape === true) {
