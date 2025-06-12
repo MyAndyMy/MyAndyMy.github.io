@@ -1,4 +1,3 @@
-<!-- 这一版本的div的宽高数据来自于内核层 -->
 <!DOCTYPE html>
 <html lang="zh">
 
@@ -17,7 +16,7 @@
             /* 使页面高度为视口高度 */
             margin: 0;
             /* 去掉默认边距 */
-            background-color: #e21313;
+            background-color: #ffffff;
             /* 背景颜色 */
             padding: 0px;
             /* 页面内边距 */
@@ -30,9 +29,8 @@
             /* 去掉内边距 */
             display: flex;
             flex-direction: column;
-            /* 或 row，取决于你想怎么排列 */
             gap: 0;
-            /* 新增，确保没有间隙 */
+            /* 确保没有间隙 */
         }
 
         .dynamic-div {
@@ -43,38 +41,28 @@
             padding: 0;
             /* 去掉内边距 */
             overflow: hidden;
-            /* 隐藏溢出内容 */
-            background-color: yellow;
-            /* 新增这一行 */
+            /* 隐藏滚动条*/
+            background-color: #ffffff;
             position: relative;
         }
 
         img {
             object-fit: contain;
-            /* 根据需要设置填充方式 */
+            /* 填充方式 */
             width: 100%;
-            /* 图片宽度为 100% */
             height: 100%;
-            /* 图片高度为 100% */
         }
     </style>
 </head>
 
 <body>
     <div class="container" id="divContainer"></div>
-
     <script>
-        // 获取当前页面的 URL
-        const currentUrl = window.location.href;
+        const currentUrl = window.location.href; // 获取当前页面的 URL
+        const url = new URL(currentUrl); // 使用 URL 对象解析 URL
+        const params = new URLSearchParams(url.search); // 使用 URLSearchParams 获取查询参数
 
-        // 使用 URL 对象解析 URL
-        const url = new URL(currentUrl);
-
-        // 使用 URLSearchParams 获取查询参数
-        const params = new URLSearchParams(url.search);
-
-        // 获取 img 参数并拆分成数组
-        const imgList = params.get('img') ? params.get('img').split(',') : [];
+        const imgList = params.get('img') ? params.get('img').split(',') : []; // 获取 img 参数并拆分成数组
         const paperSize = params.get('paper_size');
         console.log('纸张大小:', paperSize);
         const landscape = params.get('landscape') === 'true'; // 获取 auto_rotate 参数并转换为布尔值
@@ -86,27 +74,26 @@
 
         // 根据 paper_size 设置宽度和高度
         let width, height;
-        if (paperSize === 'A4') {
+        if (paperSize === 'A4') { // 297mm x 210mm
             if (landscape === true) {
-                width = '297mm';
-                height = '203mm'; // 这里从210mm调到了200mm
+                width = '1090.67px';
+                height = '745.333px';
             } else {
-                width = '761.333px';
-                height = '1090.67px'; // 这里从297调整到306，所以这个参数应该来自于内核
+                width = '745.333px';
+                height = '1086.67px'; // 这里自己编译的chromium内核值为1122.67px, 但使用1122.67px时，mac上官网下载的chromium在打印时会多出一些, 所以调整为1086.67px
             }
-        } else if (paperSize === 'A3') {
+        } else if (paperSize === 'A3') { // 420mm x 297mm
             if (landscape === true) {
-                width = '420mm';
-                height = '287mm'; // 这里从297mm调到了287mm
+                width = '1556px';
+                height = '1064.67px'; // 这里自己编译的chromium内核值为1090.67px, 但使用1090.67px时，mac上官网下载的chromium在打印时会多出一些, 所以调整为1064.67px
             } else {
-                width = '297mm';
-                height = '420mm';
+                width = '1090.67px';
+                height = '1556px';
             }
-        } else {
-            // 默认值（可以根据需要添加其他纸张大小的条件）
+        } else { // 其他尺寸待新增
             if (landscape === true) {
                 width = '297mm'; // 默认值
-                height = '200mm'; // 这里从210mm调到了200mm
+                height = '200mm'; // 默认值
             } else {
                 width = '210mm'; // 默认值
                 height = '297mm'; // 默认值
@@ -134,23 +121,22 @@
             img.style.width = '100%';
             img.style.height = '100%';
             img.style.objectFit = autoFill ? 'cover' : 'contain';
-            img.style.transform = ''; // 先清空
+            img.style.transform = '';
 
             // 判断图片的宽高比
             img.onload = function () {
                 const aspectRatio = img.naturalWidth / img.naturalHeight;
                 console.log('图片${imgSrc}的宽度:', img.naturalWidth, '高度:', img.naturalHeight, '是否需要自动旋转:', autoRotate);
-                if (aspectRatio < 1) { // 竖屏图片
-                    if (landscape === false) { // 纸张为垂直方向
-                        // 什么都不做
-                    } else if (landscape === true) {// 纸张为水平方向
-                        if (autoRotate) { // 如果开了自动旋转
-                            img.style.transform = 'rotate(90deg)'; // 旋转图片
+                if (aspectRatio < 1) { // 如果是竖屏图片
+                    if (landscape === false) { // 如果纸张为垂直方向
+                        // 那么什么都不做
+                    } else if (landscape === true) {// 如果纸张为水平方向
+                        if (autoRotate) { // 如果自动旋转开
+                            img.style.transform = 'rotate(90deg)'; // 那么旋转图片
                             // 旋转后，宽高要对调
                             img.style.width = '100%';
                             img.style.height = '100%';
-                            // 让图片撑满div
-                            // 关键：用JS交换宽高
+                            // 让图片撑满div, 关键：用JS交换宽高
                             // 由于旋转后，img的宽高是反的，所以需要让img的宽度等于div的高度，高度等于div的宽度
                             img.style.width = div.style.height;
                             img.style.height = div.style.width;
@@ -159,22 +145,21 @@
                             img.style.top = '50%';
                             img.style.left = '50%';
                             img.style.transform = 'translate(-50%, -50%) rotate(90deg)';
-                        } else { // 如果没开自动旋转
-                            // 什么都不做
+                        } else { // 如果自动旋转关
+                            // 那么什么都不做
                         }
                     }
-                } else if (aspectRatio > 1) { // 横屏图片
-                    if (landscape === true) { // 纸张为水平方向
-                        // 什么都不做
-                    } else if (landscape === false) {// 纸张为垂直方向
-                        if (autoRotate) { // 如果开了自动旋转
-                            img.style.transform = 'rotate(90deg)'; // 旋转图片
+                } else if (aspectRatio > 1) { // 如果是横屏图片
+                    if (landscape === true) { // 如果纸张为水平方向
+                        // 那么什么都不做
+                    } else if (landscape === false) {// 如果纸张为垂直方向
+                        if (autoRotate) { // 如果自动旋转开
+                            img.style.transform = 'rotate(90deg)'; // 那么旋转图片
                             img.style.transformOrigin = 'center center';
                             // 旋转后，宽高要对调
                             img.style.width = '100%';
                             img.style.height = '100%';
-                            // 让图片撑满div
-                            // 关键：用JS交换宽高
+                            // 让图片撑满div, 用JS交换宽高
                             // 由于旋转后，img的宽高是反的，所以需要让img的宽度等于div的高度，高度等于div的宽度
                             img.style.width = div.style.height;
                             img.style.height = div.style.width;
@@ -183,8 +168,8 @@
                             img.style.top = '50%';
                             img.style.left = '50%';
                             img.style.transform = 'translate(-50%, -50%) rotate(90deg)';
-                        } else { // 如果没开自动旋转
-                            // 什么都不做
+                        } else { // 如果自动旋转关
+                            // 那么什么都不做
                         }
                     }
                 }
