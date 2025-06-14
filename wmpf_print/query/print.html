@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-wrap: wrap; /* 允许换行 */
+            justify-content: flex-start;
+            height: 100vh; /* 使页面高度为视口高度 */
+            margin: 0; /* 去掉默认边距 */
+            background-color: #ffffff; /* 背景颜色 */
+            padding: 0px; /* 去掉内边距 */
+        }
+
+        .container {
+            margin: 0; /* 去掉外边距 */
+            padding: 0; /* 去掉内边距 */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dynamic-div {
+            border: none; /* 去掉边框 */
+            margin: 0; /* 去掉外边距 */
+            padding: 0; /* 去掉内边距 */
+            overflow: hidden; /* 隐藏滚动条*/
+            background-color: #ffffff;
+            position: relative;
+        }
+
+        img {
+            object-fit: contain; /* 填充方式 */
+            width: 100%;
+            height: 100%;
+        }
+
+        @media print {
+            @page {
+                margin: 0;
+            }
+            body {
+                margin: 0;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="divContainer"></div>
+    <script>
+        const currentUrl = window.location.href; // 获取当前页面的URL
+        const url = new URL(currentUrl); // 使用URL对象解析URL
+        const params = new URLSearchParams(url.search); // 使用URLSearchParams获取查询参数
+
+        const imgList = params.get('img') ? params.get('img').split(',') : []; // 获取img参数并拆分成数组，默认为空
+        const paperSize = params.get('paper_size') || 'A4'; // 获取paper_size参数并转换为布尔值，默认为A4
+        console.log('纸张大小:', paperSize);
+        const margin = params.get('margin') ? parseInt(params.get('margin')) : 10; // 获取margin参数并转换为布尔值，默认为10
+        console.log('边距:', margin);
+        const landscape = params.get('landscape') ? params.get('landscape') === 'true' : false; // 获取landscape参数并转换为布尔值，默认false（竖屏）
+        console.log('是否为横屏:', landscape);
+        const autoRotate = params.get('auto_rotate') ? params.get('auto_rotate') === 'true' : true; // 获取auto_rotate参数并转换为布尔值，默认true
+        console.log('是否自动旋转:', autoRotate);
+        const autoFill = params.get('auto_fill') ? params.get('auto_fill') === 'true' : false; // 获取auto_fill参数并转换为布尔值，默认false
+        console.log('是否填充纸张:', autoFill);
+
+        // 根据paper_size设置宽度和高度
+        let width, height;
+        if (paperSize === 'A4') { // 297mm x 210mm
+            if (landscape === true) {
+                width = '297mm';
+                height = '210mm';
+            } else {
+                width = '210mm';
+                height = '297mm';
+            }
+        } else if (paperSize === 'A3') { // 420mm x 297mm
+            if (landscape === true) {
+                width = '420mm';
+                height = '297mm';
+            } else {
+                width = '297mm';
+                height = '420mm';
+            }
+        } else { // 其他尺寸待新增
+            if (landscape === true) {
+                width = '297mm'; // 默认为A4
+                height = '200mm'; // 默认为A4
+            } else {
+                width = '210mm'; // 默认为A4
+                height = '297mm'; // 默认为A4
+            }
+        }
+
+        // 获取容器
+        const container = document.getElementById('divContainer');
+
+        function getRandomColor() {
+            return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+        }
+
+        // 根据img_list动态生成div
+        imgList.forEach((imgSrc) => {
+            const div = document.createElement('div');
+            div.className = 'dynamic-div';
+            div.style.width = width;
+            div.style.height = height;
+            div.style.backgroundColor = getRandomColor();
+
+            // 创建 img 元素
+            const img = document.createElement('img');
+            img.src = imgSrc;
+            img.id = 'dynamicImage';
+
+            img.style.position = 'absolute';
+            img.style.width = `calc(100% - ${2 * margin}px)`;
+            img.style.height = `calc(100% - ${2 * margin}px)`;
+            img.style.margin = `${margin}px`;
+            img.style.objectFit = autoFill ? 'cover' : 'contain';
+            img.style.transform = '';
+
+            // 判断图片的宽高比
+            img.onload = function () {
+                const aspectRatio = img.naturalWidth / img.naturalHeight;
+                console.log('图片${imgSrc}的宽度:', img.naturalWidth, '高度:', img.naturalHeight, '是否需要自动旋转:', autoRotate);
+                if (aspectRatio < 1) { // 如果是竖屏图片
+                    if (landscape === false) { // 如果纸张为垂直方向
+                        // 那么什么都不做
+                    } else if (landscape === true) {// 如果纸张为水平方向
+                        if (autoRotate) { // 如果自动旋转开
+                            img.style.transformOrigin = 'center center';
+                            img.style.position = 'absolute';
+                            img.style.top = '50%';
+                            img.style.left = '50%';
+                            img.style.transform = 'translate(-50%, -50%) rotate(90deg)';
+
+                            let targetWidth = div.offsetHeight - 2 * margin;
+                            let targetHeight = div.offsetWidth - 2 * margin;
+
+                            img.style.width = targetWidth + 'px'; // 旋转后图片的视觉宽度
+                            img.style.height = targetHeight + 'px';    // 旋转后图片的视觉高度
+
+                            img.style.margin= '0px 0px 0px 0px';
+
+                        } else { // 如果自动旋转关
+                            // 那么什么都不做
+                        }
+                    }
+                } else if (aspectRatio > 1) { // 如果是横屏图片
+                    if (landscape === true) { // 如果纸张为水平方向
+                        // 那么什么都不做
+                    } else if (landscape === false) {// 如果纸张为垂直方向
+                        if (autoRotate) { // 如果自动旋转开
+                            img.style.transformOrigin = 'center center';
+                            img.style.position = 'absolute';
+                            img.style.top = '50%';
+                            img.style.left = '50%';
+                            img.style.transform = 'translate(-50%, -50%) rotate(90deg)';
+
+                            let targetWidth = div.offsetHeight - 2 * margin;
+                            let targetHeight = div.offsetWidth - 2 * margin;
+
+                            img.style.width = targetWidth + 'px'; // 旋转后图片的视觉宽度
+                            img.style.height = targetHeight + 'px';    // 旋转后图片的视觉高度
+
+                            img.style.margin= '0px 0px 0px 0px';
+                        } else { // 如果自动旋转关
+                            // 那么什么都不做
+                        }
+                    }
+                }
+
+
+            };
+            // 将img添加到 div 中
+            div.appendChild(img);
+
+            // 将div添加到容器中
+            container.appendChild(div);
+        });
+    </script>
+</body>
+
+</html>
