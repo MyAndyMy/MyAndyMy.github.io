@@ -3,10 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>简单示例</title>
+  <title>跳转按钮示例</title>
   <link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/libs/weui/2.4.2/weui.min.css" />
 </head>
 <body>
-  <div class="weui-btn weui-btn_primary">这是一个使用 WeUI 样式的按钮</div>
+  <button class="weui-btn weui-btn_primary" id="jumpBtn">跳转到 weui.min.css</button>
+
+  <script>
+    document.getElementById('jumpBtn').addEventListener('click', function() {
+      window.location.href = 'https://res.wx.qq.com/open/libs/weui/2.4.2/weui.min.css';
+    });
+  </script>
 </body>
 </html>
