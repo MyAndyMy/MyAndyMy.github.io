@@ -2,11 +2,29 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>简单示例</title>
-  <link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/libs/weui/2.4.2/weui.min.css" />
+  <title>iframe 内 body 中的 link 示例</title>
 </head>
 <body>
-  <div class="weui-btn weui-btn_primary">这是一个使用 WeUI 样式的按钮</div>
+  <h1>外层页面</h1>
+  <iframe
+    style="width: 300px; height: 150px; border: 1px solid #ccc;"
+    srcdoc='
+      <!DOCTYPE html>
+      <html lang="zh-CN">
+      <head>
+        <meta charset="UTF-8" />
+        <title>iframe 内容</title>
+      </head>
+      <body>
+        <div>
+          <link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/libs/weui/2.4.2/weui.min.css" />
+        </div>
+        <div class="weui-btn weui-btn_primary" style="margin:20px;">
+          iframe 中 body 内 div 里的 WeUI 按钮
+        </div>
+      </body>
+      </html>
+    '
+  ></iframe>
 </body>
 </html>
