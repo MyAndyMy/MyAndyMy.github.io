@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>资源加载错误监听示例</title>
+  <style>
+    .event-log-contents {
+      border: 1px solid #ccc;
+      padding: 10px;
+      height: 120px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      font-family: monospace;
+      margin-top: 10px;
+    }
+    button {
+      margin-top: 10px;
+    }
+    img {
+      max-width: 300px;
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>资源加载错误事件监听示例</h2>
+
+  <button id="load-resource">加载资源</button>
+
+  <img id="resource-img" alt="加载的资源" />
+
+  <div class="event-log-contents"></div>
+
+  <script>
+    const log = document.querySelector(".event-log-contents");
+    const btnLoad = document.getElementById("load-resource");
+    const img = document.getElementById("resource-img");
+
+    // 监听img的load事件
+    img.addEventListener("load", () => {
+      log.textContent += "load: 资源加载成功\n";
+      console.log("资源加载成功");
+    });
+    // 监听img的error事件
+    img.addEventListener("error", (e) => {
+      log.textContent += "error: 资源加载失败\n";
+      console.error("资源加载失败", e);
+    });
+
+    btnLoad.addEventListener("click", () => {
+      // 设置图片src为你的资源URL，触发加载
+      img.src = "https://wxapp.tc.qq.com/251/20304/stodownload?encfilekey=oibeqyX228riaCwo9STVsGLPj9UYCicgttvhmu8Xr9YtagFKDrhUA1zfQm4NDSGcoW79cVsgNHalibVicHjRBRRjFJm0YnaPm07xe3OI0axayAo4uxVoOYia4I5wNWXB0nB3Ht24yoXetJVF4&token=cztXnd9GyrFic3jndkicLXIK3kahoGc79Aia8nJEwhnUKVlfDkwxCxjdhpLDoxkeEQwmDicggT4CdFbG3EAr3GPXbvgco7YbzibbhOw883sSEpO1VvdGGiaP8Eyj15td5yn3ry87S3ldUk1rFJMNncazkqGKvwYnK7S1M4&idx=1&hy=SH&m=7318aeef7e6ac38d870439b1fd3a516b&uzid=1&picformat=200&picformat=200&picformat=200";
+      log.textContent += "开始加载资源...\n";
+    });
+  </script>
+</body>
+</html>
