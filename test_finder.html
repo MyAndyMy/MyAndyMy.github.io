@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <title>资源加载错误监听示例</title>
+  <title>图片加载错误监听示例</title>
   <style>
     .event-log-contents {
       border: 1px solid #ccc;
@@ -24,11 +24,11 @@
   </style>
 </head>
 <body>
-  <h2>资源加载错误事件监听示例</h2>
+  <h2>图片加载错误监听示例</h2>
 
-  <button id="load-resource">加载资源</button>
+  <button id="load-resource">加载图片资源</button>
 
-  <img id="resource-img" alt="加载的资源" />
+  <img id="resource-img" alt="加载的图片" />
 
   <div class="event-log-contents"></div>
 
@@ -37,21 +37,18 @@
     const btnLoad = document.getElementById("load-resource");
     const img = document.getElementById("resource-img");
 
-    // 监听img的load事件
     img.addEventListener("load", () => {
-      log.textContent += "load: 资源加载成功\n";
-      console.log("资源加载成功");
+      log.textContent += "load: 图片加载成功\n";
+      console.log("图片加载成功");
     });
-    // 监听img的error事件
     img.addEventListener("error", (e) => {
-      log.textContent += "error: 资源加载失败\n";
-      console.error("资源加载失败", e);
+      log.textContent += "error: 图片加载失败\n";
+      console.error("图片加载失败", e);
     });
 
     btnLoad.addEventListener("click", () => {
-      // 设置图片src为你的资源URL，触发加载
-      img.src = "https://finder.video.qq.com/251/20350/stodownload?encfilekey=rjD5jyTuFrIpZ2ibE8T7YmwgiahniaXswqzzicEiawBjticmEqc9ua5M6nU4JafcF3IyALGGicDlLPlFAYwPIfpmwkibic9iblOKZMicJjicicgYDL5qPeu1A3DYZJyhicGg&hy=SH&idx=1&m=&scene=2&uzid=1&picformat=200&token=cztXnd9GyrFHsCMU8q7YEHIPuTud2OwT9mQjuH3FM9kGGffUX3KGOXGLH74djE2KBbmPSAlJDvvtAe6r0WlMB5JyEWDKic7G0QnjtiaOXGCwTIjTDsjNE7FiczTcgiciaTad3H8UX2YnNZ0qFAsppzEia65Vmny2Havxfd&ctsc=1-144&wxampicformat=501&picformat=200&picformat=200";
-      log.textContent += "开始加载资源...\n";
+      img.src = "https://finder.video.qq.com/251/20350/stodownload?encfilekey=rjD5jyTuFrIpZ2ibE8T7YmwgiahniaXswqzRTJZpGbTuRD6DQpl0HdLjv5Iia51RwJxKg6iafbLwT6UaqcZPrYYgSGYLVFrembe7VVOpsODQClibCcFg24PcaK2A&hy=SH&idx=1&m=&scene=2&uzid=1&picformat=200&token=x5Y29zUxcibCadRELU5qibEm8ibicB42qU9ibSHtialctpztTF3vJdCkeF57r9qRiaxvME68fOlnQrHlYCz2a1OeIS27jRQk30YVms0xsbQYSCKFJYXKQa8ryDcR0tR1QxnBXFV1VBYS7ibMLGibdPb77nTvC2H9SVnibab7sZ&ctsc=1-144&wxampicformat=501&picformat=200&picformat=200";
+      log.textContent += "开始加载图片...\n";
     });
   </script>
 </body>
