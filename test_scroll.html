@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>横向和竖向滑动示例</title>
+<style>
+  /* 容器固定大小，允许滚动 */
+  .scroll-container {
+    width: 300px;
+    height: 200px;
+    border: 1px solid #ccc;
+    overflow: auto; /* 显示滚动条，横向和竖向都可以滚 */
+    white-space: nowrap; /* 防止内容自动换行，实现横向滚动 */
+  }
+
+  /* 长宽足够大的内容 */
+  .content {
+    width: 800px;   /* 横向宽度大于容器宽度，触发横向滚动 */
+    height: 600px;  /* 纵向高度大于容器高度，触发竖向滚动 */
+    background: linear-gradient(45deg, #f0f8ff, #8ac6d1);
+  }
+
+</style>
+</head>
+<body>
+
+<h2>横向和竖向滚动示例</h2>
+
+<div class="scroll-container">
+  <div class="content">
+    <p style="padding: 10px; font-size: 16px; color: #333;">
+      这里是一段内容，宽度和高度都超过了容器大小，所以既可以横向滚动，也可以竖向滚动。<br/>
+      试着拖动滚动条或者用鼠标滚轮试试吧！<br/>
+      你也可以用触摸板或者手机滑动体验效果。
+    </p>
+  </div>
+</div>
+
+</body>
+</html>
