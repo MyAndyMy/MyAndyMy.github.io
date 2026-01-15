@@ -2,7 +2,10 @@
 <head>
     <title>App Shim Scroll Demo</title>
     <style>
-        html { overflow-x: scroll; }
+        body {
+          overflow-x: hidden; /* 关键：切断了 X 轴的弹性逻辑 */
+          height: 100%;
+        }
     </style>
 </head>
 <body>
