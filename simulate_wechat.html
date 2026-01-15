@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>微信滚动特性模拟 Demo</title>
+    <style>
+        :root { --wechat-bg: #edeeef; }
+        body { 
+            margin: 0; 
+            background: var(--wechat-bg); 
+            font-family: -apple-system, sans-serif;
+            /* 关键：保持默认的弹性效果，观察 StretchAmount */
+            overscroll-behavior: auto; 
+        }
+
+        /* 模拟微信顶部的“由某某提供”底色 */
+        .container { background: white; min-height: 200vh; position: relative; }
+        
+        .header { padding: 20px; font-size: 22px; font-weight: bold; border-bottom: 1px solid #eee; }
+        .meta { padding: 0 20px 20px; color: #888; font-size: 14px; }
+
+        .content { padding: 20px; line-height: 1.6; color: #333; }
+        
+        /* 模拟复杂 DOM 树：深度嵌套会增加布局计算压力 */
+        .nested-box { padding: 2px; border: 1px solid rgba(0,0,0,0.01); }
+
+        /* 大图模拟：增加图片解码和 GPU 显存压力 */
+        .fake-image { 
+            width: 100%; 
+            height: 300px; 
+            background: linear-gradient(45deg, #ccc, #eee); 
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #999;
+        }
+
+        /* 实时性能监控面板 */
+        #monitor {
+            position: fixed; top: 10px; right: 10px;
+            background: rgba(0,0,0,0.8); color: #0f0;
+            padding: 10px; border-radius: 8px; font-family: monospace;
+            z-index: 1000; pointer-events: none; font-size: 12px;
+        }
+        .warning { color: #ff3b30; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div id="monitor">
+    <div>帧间隔: <span id="fps">0</span>ms</div>
+    <div>deltaY: <span id="dy">0</span></div>
+    <div id="status">状态: 正常</div>
+</div>
+
+<div class="container">
+    <div class="header">深度解析：为什么滚动会发生突变？</div>
+    <div class="meta">微信内核分析小组 2024-01-13</div>
+
+    <div class="content" id="mainContent">
+        <p>这是一个模拟微信公众号环境的页面。我们通过 JS 注入了“主线程饥饿”逻辑。</p>
+        
+        <!-- 模拟 10 张大图 -->
+        <div class="fake-image">HEAVY IMAGE DATA (DECODING...)</div>
+        <div id="nestedAnchor"></div>
+        <div class="fake-image">HEAVY IMAGE DATA (DECODING...)</div>
+        <div class="fake-image">HEAVY IMAGE DATA (DECODING...)</div>
+        <div class="fake-image">HEAVY IMAGE DATA (DECODING...)</div>
+        <div class="fake-image">HEAVY IMAGE DATA (DECODING...)</div>
+    </div>
+</div>
+
+<script>
+    // 1. 模拟微信复杂的 DOM 嵌套
+    const anchor = document.getElementById('nestedAnchor');
+    let current = anchor;
+    for(let i=0; i<100; i++) { // 100层嵌套
+        const div = document.createElement('div');
+        div.className = 'nested-box';
+        div.innerText = i === 99 ? "--- 嵌套栈底 ---" : "";
+        current.appendChild(div);
+        current = div;
+    }
+
+    // 2. 【核心】模拟主线程繁忙 (Starvation)
+    // 微信公众号后台常有上报、广告逻辑或复杂的 DOM 改变
+    function simulateMainThreadBusy() {
+        // 每隔 150ms，强行霸占主线程 80ms
+        // 这将直接触发 Chromium 的 100ms 事件合并逻辑
+        setInterval(() => {
+            const start = performance.now();
+            document.getElementById('status').innerText = "状态: 主线程繁忙 (80ms)";
+            document.getElementById('status').classList.add('warning');
+            
+            while (performance.now() - start < 80) {
+                // 死循环阻塞
+            }
+            
+            setTimeout(() => {
+                document.getElementById('status').innerText = "状态: 正常";
+                document.getElementById('status').classList.remove('warning');
+            }, 20);
+        }, 150);
+    }
+
+    // 3. 【核心】模拟非被动监听器 (Non-Passive)
+    // 微信注入的 SDK 常使用传统的监听方式，强制浏览器等待 JS 处理
+    window.addEventListener('wheel', (e) => {
+        const now = performance.now();
+        const gap = now - lastTime;
+        lastTime = now;
+
+        // 更新监控面板
+        document.getElementById('fps').innerText = gap.toFixed(1);
+        document.getElementById('dy').innerText = e.deltaY.toFixed(2);
+
+        // 如果 deltaY 突变（例如超过 50），高亮显示
+        if (Math.abs(e.deltaY) > 50) {
+            document.getElementById('dy').classList.add('warning');
+        } else {
+            document.getElementById('dy').classList.remove('warning');
+        }
+
+        // 模拟一些复杂的计算逻辑
+        for(let i=0; i<1000000; i++) { Math.sqrt(i); }
+
+    }, { passive: false }); // 显式设置为 false，阻止浏览器内核的优化
+
+    let lastTime = performance.now();
+    
+    // 启动模拟
+    simulateMainThreadBusy();
+
+</script>
+</body>
+</html>
