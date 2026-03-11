@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Media Screen 打印对比演示</title>
+    <style>
+        /* 所有的样式都写在这里，只对屏幕有效 */
+        @media screen {
+            body {
+                background-color: #f4f7f6;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                color: #333;
+                margin: 0;
+                padding: 40px;
+                line-height: 1.6;
+            }
+
+            .main-content {
+                max-width: 800px;
+                margin: 0 auto;
+                background: #ffffff;
+                padding: 30px;
+                border-radius: 12px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            }
+
+            header {
+                border-bottom: 2px solid #007bff;
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+            }
+
+            h1 {
+                color: #007bff;
+                margin: 0;
+            }
+
+            .info-card {
+                background: #e7f3ff;
+                border-left: 5px solid #007bff;
+                padding: 15px;
+                margin: 20px 0;
+            }
+
+            .sample-image {
+                width: 300px;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 8px;
+                border: 3px solid #eee;
+                display: block;
+                margin: 20px 0;
+            }
+
+            .btn {
+                display: inline-block;
+                background-color: #28a745;
+                color: white;
+                padding: 10px 25px;
+                text-decoration: none;
+                border-radius: 50px;
+                font-weight: bold;
+                transition: background 0.3s;
+            }
+
+            .btn:hover {
+                background-color: #218838;
+            }
+
+            footer {
+                margin-top: 30px;
+                font-size: 0.9em;
+                color: #888;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-content">
+        <header>
+            <h1>文章标题：样式丢失实验</h1>
+        </header>
+
+        <section>
+            <p>这是一个演示页面。当前你看到的精美布局（蓝色的标题、灰色的背景、带阴影的白底卡片）全部是由 <code>@media screen</code> 控制的。</p>
+            
+            <div class="info-card">
+                <strong>提示：</strong> 当你按下 <strong>Ctrl + P</strong> 进入打印预览时，这个蓝色的边框和浅蓝色的背景都会消失。
+            </div>
+
+            <p>下面是一张带有固定宽度和圆角的图片：</p>
+            <img src="https://picsum.photos/600/400" alt="示例图片" class="sample-image">
+
+            <p>甚至这个绿色的交互按钮：</p>
+            <a href="#" class="btn">了解更多</a>
+        </section>
+
+        <footer>
+            © 2024 样式实验演示程序
+        </footer>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px; color: #666;">
+        <p>← 屏幕上看很美 | 打印预览里很乱 →</p>
+    </div>
+
+</body>
+</html>
