@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>uniview m3u8 video (no autoplay)</title>
+<style>
+  body { margin: 0; background: #000; color: #ccc; font: 12px monospace; }
+  video { width: 100%; background: #000; }
+  .bar { padding: 8px; }
+  button { margin-right: 8px; padding: 6px 10px; }
+  #log { padding: 8px; white-space: pre-wrap; word-break: break-all; }
+</style>
+</head>
+<body>
+<video id="v" controls playsinline preload="metadata">
+  <source src="https://livepull3.uniview.com/live/210235c6u33231000539000001037310.m3u8?txTime=6AF8161C&txSecret=82e0add61cdeafb5ef4d5477d696078c" type="application/vnd.apple.mpegurl">
+</video>
+<div class="bar">
+  <button id="btnPlay">play()</button>
+  <button id="btnPause">pause()</button>
+  <button id="btnReload">load()</button>
+  <span id="state"></span>
+</div>
+<div id="log"></div>
+<script>
+  var v = document.getElementById('v');
+  var logEl = document.getElementById('log');
+  var stateEl = document.getElementById('state');
+
+  function now() { return new Date().toISOString().substr(11, 12); }
+  function log(s) { logEl.textContent += now() + ' ' + s + '\n'; }
+  function show() { stateEl.textContent = 'autoplay=' + v.autoplay + ' hasAttr=' + v.hasAttribute('autoplay'); }
+
+  ['loadstart', 'loadedmetadata', 'canplay', 'play', 'playing', 'pause', 'waiting', 'stalled', 'error']
+    .forEach(function (name) {
+      v.addEventListener(name, function () {
+        var extra = (name === 'error' && v.error) ? ' code=' + v.error.code : '';
+        log(name + ' paused=' + v.paused + ' ready=' + v.readyState +
+            ' net=' + v.networkState + ' t=' + v.currentTime.toFixed(2) + extra);
+      });
+    });
+
+  document.getElementById('btnPlay').onclick = function () {
+    log('call play()');
+    var p = v.play();
+    if (p && p.catch) {
+      p.then(function () { log('play() resolved'); })
+       .catch(function (e) { log('play() rejected: ' + e.name); });
+    }
+  };
+  document.getElementById('btnPause').onclick = function () {
+    log('call pause()');
+    v.pause();
+  };
+  document.getElementById('btnReload').onclick = function () {
+    log('call load()');
+    v.load();
+  };
+
+  show();
+  log('page ready');
+</script>
+</body>
+</html>
